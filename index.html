@@ -633,7 +633,7 @@ button:focus-visible,.char-card:focus-visible,.zone-node:focus-visible,input:foc
 .zone-bubble.available{box-shadow:0 0 0 4px #E8F0FE!important}
 .zone-label{max-width:100%;min-height:32px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;line-height:1.25}
 .zone-tag{max-width:120px;color:#70757A;font-size:9px;line-height:1.35}
-.zone-xp{margin-top:auto;padding-top:7px;border-top:1px solid #F1F3F4;font-size:9px;font-weight:700;line-height:1.3}
+.zone-xp{margin-top:auto;padding-top:7px;border-top:1px solid #F1F3F4;color:#5F6368;font-size:9px;font-weight:700;line-height:1.3}
 .zone-connector{display:none}
 .zone-num{width:19px;height:19px;font-size:9px}
 .map-footer{min-height:60px;justify-content:center;gap:8px;padding:8px clamp(10px,2vw,24px)}
@@ -737,6 +737,41 @@ button:focus-visible,.char-card:focus-visible,.zone-node:focus-visible,input:foc
 .victory-title{font-family:'Google Sans',Roboto,Arial,sans-serif;color:#137333;font-size:clamp(22px,4vw,30px);letter-spacing:-.04em}
 .victory-sub{color:#5F6368;font-size:13px;line-height:1.5}
 .loot-grid{gap:10px}.loot-item{border:1px solid #E8EAED;border-radius:15px;background:#F8F9FA}.loot-name{color:#3C4043}.loot-desc{color:#70757A;font-size:11px;line-height:1.4}
+@media(max-width:760px){
+  .screen,.map-body,.zone-body,.overlay-panel{overscroll-behavior:contain}
+  .map-footer .map-btn{min-height:48px;font-size:10px}
+  .zone-header-back{min-height:44px;padding:8px 11px}
+  .zone-header-icon{width:38px;height:38px}
+  .phase-dot{width:28px;height:28px}
+  .zone-node{min-height:148px;padding:11px 9px}
+  .zone-label{font-size:12px;line-height:1.3}
+  .zone-tag{font-size:10px;line-height:1.35}
+  .zone-xp{font-size:9px;line-height:1.35}
+  .map-route-hint{font-size:10px}
+  .map-footer .map-btn,.map-continue,.npc-choice,.study-topic,.study-actions button,.boss-opt,.resource-link{min-height:48px}
+  .study-topic{padding:12px;line-height:1.35}
+  .study-topic strong{font-size:12px}.study-topic span{font-size:10px}
+  .study-quiz-options button,.lesson-check button{min-height:48px;font-size:13px;line-height:1.4}
+  .close-overlay{width:44px;height:44px;min-width:44px;min-height:44px;border-radius:12px}
+  .npc-compose button{min-width:48px;min-height:48px}
+  .npc-compose input{min-height:48px}
+  .boss-opt{font-size:14px}
+  .video-launch button{min-height:48px;padding:13px 18px}
+  .study-notes textarea{min-height:120px}
+  .map-footer .map-btn:active,.map-continue:active,.zone-node:not(.locked):active,.char-card:active,.npc-choice:active,.study-topic:active,.study-actions button:active{transform:scale(.985)}
+}
+@media(max-width:370px){
+  .map-footer .map-btn{flex-basis:100%;min-height:46px}
+  .zone-node{min-height:98px}
+  .zone-tag{font-size:10px}
+  .map-section-label h2{font-size:15px}
+  .study-topic-grid{grid-template-columns:1fr}
+  .preview-features{grid-template-columns:1fr}
+  .map-overview-progress{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+}
+@media(hover:none){
+  .zone-node:not(.locked):hover,.char-card:hover,.npc-choice:hover,.map-btn:hover,.map-continue:hover{transform:none;box-shadow:inherit}
+}
 </style>
 </head>
 <body>
@@ -1312,7 +1347,7 @@ function renderMap(){
       </div>
       <div class="zone-label">${z.name}</div>
       <div class="zone-tag">${z.tag}</div>
-      <div class="zone-xp" style="color:${z.color}">+${z.xp} practice XP</div>
+      <div class="zone-xp">+${z.xp} practice XP</div>
     </div>
     ${i<ZONES.length-1?`<div class="zone-connector" style="width:20px;height:2px;background:${GS.completedZones.includes(z.id)?'var(--green)':'var(--border)'};align-self:flex-start;margin-top:38px;border-radius:1px"></div>`:''}`;
   }).join('');

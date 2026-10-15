@@ -408,6 +408,16 @@ input,select,textarea{font-size:16px;min-height:48px}
   .phase-dot{width:24px;height:24px}
   .btn-start{font-size:14px;letter-spacing:1px}
 }
+@media(max-width:760px) and (orientation:portrait){
+  #s-map .map-body{align-items:stretch;overflow-x:hidden;overflow-y:auto;touch-action:pan-y;scroll-snap-type:none}
+  #s-map .map-path{display:none}
+  #s-map .zones-row{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:8px;min-width:0;width:100%;padding:12px}
+  #s-map .zone-node{display:grid;grid-template-columns:56px minmax(0,1fr) auto;grid-template-rows:auto auto;align-items:center;gap:2px 10px;width:100%;min-height:68px;padding:8px 10px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;touch-action:manipulation}
+  #s-map .zone-bubble{grid-column:1;grid-row:1 / span 2;width:52px;height:52px;font-size:24px}
+  #s-map .zone-label{grid-column:2;grid-row:1 / span 2;max-width:none;text-align:left;font-size:13px;line-height:1.3}
+  #s-map .zone-xp{grid-column:3;grid-row:1 / span 2;font-size:11px}
+  #s-map .zone-connector{width:3px!important;height:10px!important;margin:0 auto!important;align-self:center!important}
+}
 </style>
 </head>
 <body>
@@ -520,8 +530,7 @@ input,select,textarea{font-size:16px;min-height:48px}
   <div class="map-footer">
     <div class="legend">
       <div class="leg-item"><span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block"></span> Complete</div>
-      <div class="leg-item"><span style="width:10px;height:10px;border-radius:50%;background:var(--blue);display:inline-block"></span> Available</div>
-      <div class="leg-item"><span style="width:10px;height:10px;border-radius:50%;background:var(--bg3);display:inline-block"></span> Locked</div>
+      <div class="leg-item">👆 Tap any stage to play</div>
     </div>
     <button class="map-btn" onclick="showOverlay('inventory')">🎒 Inventory</button>
     <button class="map-btn" onclick="showOverlay('achievements')">🏆 Achievements</button>
@@ -930,7 +939,7 @@ function renderMap(){
   const row=document.getElementById('zones-row');
   row.innerHTML=ZONES.map((z,i)=>{
     const done=GS.completedZones.includes(z.id);
-    const avail=i===0||GS.completedZones.includes(ZONES[i-1].id);
+    const avail=true;
     const locked=!avail;
     return `<div class="zone-node${locked?' locked':''}" role="button" tabindex="0" aria-disabled="${locked}" aria-label="Zone ${i+1}: ${z.name}${done?', complete':locked?', locked':', available'}" onclick="${locked?`toast('🔒 Locked','Complete Zone ${i} first!')`:('enterZone('+z.id+')')}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${locked?`toast('🔒 Locked','Complete Zone ${i} first!')`:`enterZone(${z.id})`}}">
       <div class="zone-bubble" style="background:${z.color}22;border-color:${done?'var(--green)':avail?z.color:'var(--border)'}">
@@ -941,7 +950,7 @@ function renderMap(){
       <div class="zone-label">${z.name}</div>
       <div class="zone-xp" style="color:${z.color}">+${z.xp} XP</div>
     </div>
-    ${i<ZONES.length-1?`<div style="width:20px;height:2px;background:${GS.completedZones.includes(z.id)?'var(--green)':'var(--border)'};align-self:flex-start;margin-top:38px;border-radius:1px"></div>`:''}`;
+    ${i<ZONES.length-1?`<div class="zone-connector" style="width:20px;height:2px;background:${GS.completedZones.includes(z.id)?'var(--green)':'var(--border)'};align-self:flex-start;margin-top:38px;border-radius:1px"></div>`:''}`;
   }).join('');
 }
 
@@ -1023,7 +1032,8 @@ function renderCutscene(z,body){
     "Welcome to the 10x Lab. Explore ambitious problem solving while recognizing the value of well-chosen incremental improvements.",
     "The Policy Vault. Learn how to find current guidance, protect user trust, and raise concerns through the right channels.",
     "Leadership Tower. Explore Google’s published manager framework and prepare for useful check-ins with your manager.",
-    "First 90 Days Studio. Bring the lessons together and plan a supported, role-specific start."];
+    "First 90 Days Studio. Bring the lessons together and plan a supported, role-specific start.",
+    "Global Collaboration Lab. Practice inclusive communication, cultural curiosity, fair incentives, and clear cross-time-zone teamwork."];
   body.innerHTML=`<div class="cutscene fade-in">
     <div class="cutscene-icon" style="filter:drop-shadow(0 0 20px ${z.color})">${z.icon}</div>
     <div class="cutscene-title" style="color:${z.color}">${z.name}</div>

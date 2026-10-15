@@ -1012,6 +1012,7 @@ function updateLives(){
 }
 
 function nextPhase(){GS.currentPhase++;updatePhaseBar();renderPhase();}
+function jumpToLessonVideo(){GS.currentPhase=2;updatePhaseBar();renderPhase();}
 
 function renderPhase(){
   const z=ZONES[GS.currentZone];
@@ -1045,6 +1046,7 @@ function renderCutscene(z,body){
       <div class="pill" style="background:${z.color}22;color:${z.color}">${z.tag}</div>
       <div class="pill" style="background:rgba(0,229,255,0.1);color:var(--cyan)">+${z.xp} XP on completion</div>
     </div>
+    ${LEARNING_VIDEOS[GS.currentZone]?`<button class="btn-game btn-secondary-g" style="margin-top:20px" onclick="jumpToLessonVideo()">▶ Watch the ${GS.currentZone===6?'collaboration':'stage'} video</button>`:''}
     <button class="btn-game btn-primary-g" style="margin-top:32px" onclick="nextPhase()">Enter Zone →</button>
   </div>`;
 }

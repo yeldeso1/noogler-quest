@@ -772,6 +772,25 @@ button:focus-visible,.char-card:focus-visible,.zone-node:focus-visible,input:foc
 @media(hover:none){
   .zone-node:not(.locked):hover,.char-card:hover,.npc-choice:hover,.map-btn:hover,.map-continue:hover{transform:none;box-shadow:inherit}
 }
+
+.phase-back-row{align-self:stretch;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:8px 0;border-bottom:1px solid #E8EAED}
+.retry-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.phase-back-button{min-height:44px;padding:8px 12px;border:1px solid #DADCE0;border-radius:12px;background:#fff;color:#174EA6;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer}
+.phase-back-position{color:#70757A;font-size:10px;text-align:right}
+@media(max-width:760px){
+  .retry-actions{display:grid;grid-template-columns:1fr;margin-top:20px}
+  .retry-actions button{width:100%;min-height:48px;justify-content:center}
+  .phase-back-row{position:sticky;top:0;z-index:8;align-self:stretch;margin:-16px -12px 4px;padding:8px 12px;border-bottom:1px solid #DADCE0;background:rgba(248,249,250,.97);backdrop-filter:blur(8px)}
+  .phase-back-button{min-height:48px;padding:10px 14px;font-size:13px}
+  .phase-back-position{font-size:11px}
+  .hud-left{flex-wrap:wrap;justify-content:space-between}
+  .hud-player{flex:0 1 130px}
+  .hud-stats{flex:1 1 150px;justify-content:flex-end;flex-wrap:wrap}
+  .hs{min-height:36px}
+  .study-topic-grid{grid-template-columns:1fr;gap:8px}
+  .study-topic{display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left}
+  .study-topic strong{max-width:58%;margin:0}.study-topic span{max-width:42%;text-align:right}
+}
 </style>
 </head>
 <body>
@@ -1409,8 +1428,9 @@ function updatePhaseBar(){
   PHASES.forEach((_,i)=>{
     const d=document.getElementById('pd-'+i);if(!d)return;
     d.classList.remove('done','active');
+    d.removeAttribute('aria-current');
     if(i<GS.currentPhase)d.classList.add('done');
-    else if(i===GS.currentPhase)d.classList.add('active');
+    else if(i===GS.currentPhase){d.classList.add('active');d.setAttribute('aria-current','step');}
   });
   document.getElementById('zh-sub').textContent=`Step ${GS.currentPhase+1} of ${PHASES.length} · ${PHASE_LABELS[GS.currentPhase]}`;
 }
@@ -1422,6 +1442,11 @@ function updateLives(){
 
 function nextPhase(){GS.currentPhase++;updatePhaseBar();renderPhase();}
 function jumpToLessonVideo(){GS.currentPhase=2;updatePhaseBar();renderPhase();}
+function previousPhase(){
+  if(GS.currentPhase<=0)return;
+  if(!window.confirm('Return to the previous step? This temporary chat or activity may reset. Saved study notes and completed topics stay saved.'))return;
+  GS.currentPhase--;updatePhaseBar();renderPhase();
+}
 
 function renderPhase(){
   const z=ZONES[GS.currentZone];
@@ -1436,6 +1461,11 @@ function renderPhase(){
   else if(phase==='minigame')renderMinigame(z,body);
   else if(phase==='boss')renderBoss(z,body);
   else if(phase==='victory')renderVictory(z,body);
+  if(GS.currentPhase>0){
+    const stepBack=document.createElement('div');stepBack.className='phase-back-row';stepBack.setAttribute('role','group');stepBack.setAttribute('aria-label','Step navigation');
+    stepBack.innerHTML=`<button type="button" class="phase-back-button" onclick="previousPhase()">← Previous step</button><span class="phase-back-position">Step ${GS.currentPhase+1} of ${PHASES.length} · ${PHASE_LABELS[GS.currentPhase]}</span>`;
+    body.prepend(stepBack);
+  }
 }
 
 // ── CUTSCENE ──
@@ -1920,20 +1950,23 @@ function updateBossHP(z){
   const answered=GS.bossQ+1;const total=z.boss.questions.length;
   const hp=Math.round((1-answered/total)*100);
   const hpEl=document.getElementById('boss-hp');const htEl=document.getElementById('boss-hp-text');
-  if(hpEl)hpEl.style.width=hp+'%';if(htEl)htEl.textContent=`Question ${Math.min(answered+1,total)} of ${total}`;
+  if(hpEl)hpEl.style.width=hp+'%';if(htEl)htEl.textContent=answered>=total?'Review complete':`Question ${answered+1} of ${total}`;
 }
 function bossDefeat(z){
   const body=document.getElementById('zone-body');
   body.innerHTML=`<div class="cutscene fade-in" style="text-align:center">
     <div style="font-size:72px">🔄</div>
-    <div class="cutscene-title" style="color:var(--blue)">Review and retry</div>
-    <div class="cutscene-text">No progress is lost. Revisit the lesson and try the practice again, or return to the map.</div>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px">
-      <button class="btn-game btn-boss" onclick="enterZone(${z.id})">↻ Try again</button>
+    <div class="cutscene-title" style="color:var(--blue)">A chance to review</div>
+    <div class="cutscene-text">No progress is lost. Review the key ideas, then retry this short knowledge check—or return to the map.</div>
+    <div class="retry-actions">
+      <button class="btn-game btn-secondary-g" onclick="reviewLesson()">Review key ideas</button>
+      <button class="btn-game btn-primary-g" onclick="retryKnowledgeCheck()">Retry the check</button>
       <button class="btn-game btn-secondary-g" onclick="returnToMap()">← Back to map</button>
     </div>
   </div>`;
 }
+function reviewLesson(){GS.currentPhase=2;updatePhaseBar();renderPhase();}
+function retryKnowledgeCheck(){GS.currentPhase=4;updatePhaseBar();renderPhase();}
 function bossVictory(z){if(GS.bossLives===3)checkAndGrantBadge('perfect_boss');GS.currentPhase++;renderPhase();}
 
 // ── VICTORY ──

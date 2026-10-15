@@ -181,6 +181,30 @@ html,body{width:100%;min-height:100%;height:100%;overflow:hidden;font-family:'Sp
 .guide-card ul,.guide-card ol{margin:8px 0 0;padding-left:22px;color:var(--t2);font-size:13px;line-height:1.7}
 .guide-example{border-left:3px solid var(--blue)}
 .guide-practice{border-left:3px solid var(--green)}
+.study-tools{display:grid;gap:12px;margin-top:20px;padding:16px;background:linear-gradient(135deg,rgba(66,133,244,.1),rgba(0,229,255,.04));border:1px solid rgba(66,133,244,.35);border-radius:16px}
+.study-tools h3{margin:0;color:var(--t1);font-size:16px}
+.study-progress,.study-hint{font-size:12px;line-height:1.5;color:var(--t2)}
+.study-card{padding:16px;background:var(--bg1);border:1px solid var(--border);border-radius:12px;min-height:110px}
+.study-card-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan);font-weight:700;margin-bottom:8px}
+.study-card p{font-size:14px;line-height:1.6;color:var(--t1);margin:0}
+.study-card-answer{margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.study-actions{display:flex;flex-wrap:wrap;gap:8px}
+.study-actions button,.study-notes-clear{min-height:44px;padding:10px 13px;border:1px solid var(--border);border-radius:10px;background:var(--bg1);color:var(--t1);font:inherit;font-size:12px;font-weight:600;cursor:pointer}
+.study-actions button:focus-visible,.study-notes-clear:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+.study-notes{display:grid;gap:8px}
+.study-notes label{font-weight:600;color:var(--t1);font-size:13px}
+.study-notes textarea{min-height:96px;padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--bg1);color:var(--t1);font:inherit;font-size:13px;line-height:1.5;resize:vertical}
+.study-topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:14px 0}
+.study-topic{padding:11px;border:1px solid var(--border);border-radius:11px;background:var(--bg2);color:var(--t1);text-align:left;font:inherit;cursor:pointer}
+.study-topic.active{border-color:var(--cyan);background:rgba(0,229,255,.08)}
+.study-topic strong{display:block;font-size:12px;margin-bottom:5px}
+.study-topic span{display:block;font-size:10px;line-height:1.4;color:var(--t2)}
+.study-center-block{padding:15px;margin:12px 0;background:var(--bg2);border:1px solid var(--border);border-radius:14px}
+.study-center-block h3{margin:0 0 10px;font-size:14px;color:var(--t1)}
+.study-quiz-options{display:grid;gap:8px;margin-top:12px}
+.study-quiz-options button{min-height:44px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg1);color:var(--t1);text-align:left;font:inherit;font-size:12px;cursor:pointer}
+.study-quiz-feedback{margin-top:10px;padding:10px;border-radius:9px;background:var(--bg1);font-size:12px;line-height:1.5;color:var(--t2)}
+.study-select{width:100%;min-height:44px;margin:7px 0;padding:10px;border-radius:10px;border:1px solid var(--border);background:var(--bg1);color:var(--t1);font:inherit}
 
 /* ── Mini-game ── */
 .mg-wrap{width:100%}
@@ -539,6 +563,7 @@ input,select,textarea{font-size:16px;min-height:48px}
       <div class="leg-item"><span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block"></span> Complete</div>
       <div class="leg-item">👆 Tap any stage to play</div>
     </div>
+    <button class="map-btn" onclick="showOverlay('study')">🧠 Study Center</button>
     <button class="map-btn" onclick="showOverlay('inventory')">🎒 Inventory</button>
     <button class="map-btn" onclick="showOverlay('achievements')">🏆 Achievements</button>
     <button class="map-btn" onclick="showOverlay('okrs')">🧭 First 90 Days</button>
@@ -851,6 +876,29 @@ const LESSON_GUIDES={
   6:{time:'12–15 min',objectives:['Set respectful business norms without stereotyping people by culture or identity.','Make cross-time-zone work and disagreement more inclusive.','Evaluate incentives and recognition for fairness and unintended effects.'],core:'Business etiquette works best when teams make expectations explicit: purpose, preparation, agenda, timekeeping, decision owner, response times, follow-up, and how people can contribute. Cultural backgrounds and local norms may shape expectations, but nationality, accent, or identity cannot tell you an individual’s preference. Ask respectfully, offer more than one way to participate, and explain context rather than expecting newcomers to infer unwritten rules. In global teams, rotate inconvenient meeting times when practical, account for local holidays, record decisions in an accessible shared place, and provide an asynchronous route for input. If a disagreement arises, restate the shared goal, separate observation from interpretation, ask what you may be missing, and agree on the next decision or escalation. Incentives should use transparent, role-relevant criteria and recognize quality, safety, collaboration, and less-visible contributions—not just speed or easily counted output. Pay, equity, bonuses, leave, and benefits are governed by current plan documents and eligibility rules; confirm them with official HR sources.',example:'A team rewards the number of tickets closed. People begin choosing easy tickets and skipping quality checks. The responsible response is to surface the unintended behavior without blaming one person, inspect what the metric rewards and misses, involve the accountable owner, and balance speed with quality, safety, user outcomes, and teamwork. In a separate cross-time-zone meeting, publish the agenda in advance and collect written input so attendance time does not determine whose ideas count.',practice:'Before your next fictional global meeting, write down: purpose, desired decision, attendees and roles, local-time impact, agenda, async option, decision owner, and follow-up location. Then ask: what behavior does the team’s reward metric encourage, and what important outcome might it miss?'}
 };
 
+const STUDY_GUIDE_PDFS={
+  0:'study-guides/01-culture-and-values.pdf',
+  1:'study-guides/02-okrs-and-goals.pdf',
+  2:'study-guides/03-innovation-and-experimentation.pdf',
+  3:'study-guides/04-trust-privacy-and-security.pdf',
+  4:'study-guides/05-manager-partnership.pdf',
+  5:'study-guides/06-first-90-days.pdf',
+  6:'study-guides/07-global-collaboration-etiquette-and-incentives.pdf'
+};
+const STUDY_CARDS={
+  0:[{q:'What can a mission statement do—and what can it not do?',a:'It gives direction and context. It does not replace evidence, current policy, required reviews, or the decision owner.'},{q:'What is psychological safety in team practice?',a:'People can ask questions, admit uncertainty, surface risks, and disagree respectfully without being dismissed or punished for interpersonal risk-taking.'},{q:'Name a useful first question when making a user-facing decision.',a:'Who is affected, what do they need, and what evidence do we have? Then check constraints such as privacy, safety, accessibility, and policy.'},{q:'How can teammates make it easier to raise a concern?',a:'Listen without dismissing, ask clarifying questions, thank the person, identify the right owner or review, and close the loop.'},{q:'A public company principle conflicts with a specific procedure. Which should guide action?',a:'Follow current approved internal procedure; ask the responsible owner if the conflict or application is unclear.'}],
+  1:[{q:'What is an Objective?',a:'A clear, motivating description of the meaningful change or priority the team wants to achieve.'},{q:'What makes a Key Result measurable?',a:'An observable outcome with an agreed measure, baseline, target, scope, timing, owner, and credible data source.'},{q:'Why is “launch a dashboard” usually a task, not a Key Result?',a:'It records an activity completed but not whether an outcome or user impact changed.'},{q:'How do OKRs differ from KPIs in common usage?',a:'OKRs organize time-bound priorities and results; KPIs often monitor ongoing health. Ask your team how it uses these terms.'},{q:'Are public historical OKR scoring practices universal rules?',a:'No. Treat public examples as context; follow your team’s current process and never infer compensation or performance policy from them.'}],
+  2:[{q:'What should you define before proposing a solution?',a:'The user or business problem, who is affected, why it matters, and what evidence supports it.'},{q:'What is a useful experiment?',a:'A proportionate, safe test with a clear question, success and stop criteria, owner, evidence, and next-step decision.'},{q:'Are moonshots always better than incremental work?',a:'No. Choose ambition and scope based on problem size, evidence, feasibility, risk, and team priorities.'},{q:'What should happen before testing an idea involving sensitive data?',a:'Identify the data and risks, then obtain the required privacy, security, legal, accessibility, or product review.'},{q:'What should a learning review produce?',a:'Evidence-based lessons and useful changes, while still following incident, accountability, and policy requirements.'}],
+  3:[{q:'A document is internal. Does that mean it can be sent externally?',a:'No. Verify classification, authorization, purpose, recipient, and approved sharing route.'},{q:'What is the safe response when data-use rules are unclear?',a:'Pause, avoid sharing or expanding access, and ask the data owner or designated privacy/security contact.'},{q:'What should you do if you suspect a security incident but cannot confirm impact?',a:'Follow the current internal reporting process promptly; preserve relevant facts and follow responder instructions.'},{q:'Should you investigate a possible incident yourself?',a:'No. Do not independently investigate, change systems, or spread details; use the designated response channel.'},{q:'Which source is authoritative for current policy?',a:'Current internal policy and the responsible owner or reporting channel—not this prototype or an old public overview.'}],
+  4:[{q:'What four topics make a practical 1:1 agenda?',a:'Progress, priorities, blockers or decisions, and specific feedback or support needed.'},{q:'How can you make feedback easier to act on?',a:'Describe a specific situation and impact, ask for a concrete example, and agree on a useful next action.'},{q:'What makes a development request actionable?',a:'Name a skill, a chance to practice it, what success looks like, and a time to review learning.'},{q:'Does a career conversation guarantee promotion or compensation?',a:'No. Discuss growth and expectations; use formal plan documents and processes for compensation and promotion decisions.'},{q:'What should you do if your success criteria are unclear?',a:'Ask your manager to clarify scope, expected outcomes, dependencies, timing, and how progress will be assessed.'}],
+  5:[{q:'What should a new teammate learn before changing a workflow?',a:'Who uses it, what decisions it supports, the authoritative source, access rules, dependencies, and what success means.'},{q:'What belongs in a stakeholder map?',a:'Users, work owner, decision maker, reviewers, partner teams, and people who can resolve blockers.'},{q:'How should a first-90-days plan be used?',a:'As a flexible discussion aid shaped with your manager—not a universal schedule, promise, or performance standard.'},{q:'What makes a first contribution appropriately scoped?',a:'Clear outcome, owner, dependencies, support, evidence of success, and agreement on timing.'},{q:'When should you revisit your plan?',a:'Regularly, especially when priorities, role context, dependencies, or support needs change.'}],
+  6:[{q:'How do you learn a colleague’s communication preferences?',a:'Ask respectfully and agree practical norms; do not infer preferences from nationality, accent, or identity.'},{q:'What should a useful cross-time-zone meeting include?',a:'Purpose, agenda, desired decision, clear owner, local-time awareness, asynchronous input, and documented follow-up.'},{q:'How should teams handle recurring inconvenient meeting times?',a:'Share the burden where practical, rotate times, account for holidays, and preserve async participation.'},{q:'What makes an incentive system healthier?',a:'Transparent, role-relevant criteria that balance quality, safety, user outcomes, collaboration, and less-visible work—not only speed.'},{q:'Where should someone verify pay, equity, leave, or benefits?',a:'Current official plan documents and the appropriate HR channel; eligibility depends on role, location, and plan.'}]
+};
+const STUDY_STORAGE_KEY='nq2_study_tools_v1';
+function readStudyProgress(){try{const saved=JSON.parse(localStorage.getItem(STUDY_STORAGE_KEY)||'{}');if(saved&&typeof saved==='object'&&!Array.isArray(saved))return{indexes:saved.indexes&&typeof saved.indexes==='object'?saved.indexes:{},known:saved.known&&typeof saved.known==='object'?saved.known:{},notes:saved.notes&&typeof saved.notes==='object'?saved.notes:{},schedule:saved.schedule&&typeof saved.schedule==='object'?saved.schedule:{},quiz:saved.quiz&&typeof saved.quiz==='object'?saved.quiz:{}};}catch(e){}return{indexes:{},known:{},notes:{},schedule:{},quiz:{}};}
+let STUDY_PROGRESS=readStudyProgress();
+function saveStudyProgress(){try{localStorage.setItem(STUDY_STORAGE_KEY,JSON.stringify(STUDY_PROGRESS));}catch(e){}}
+
 const LESSON_CHECKS={
   0:{question:'You are unsure whether a document can be shared outside your team. What is the safest first step?',options:['Assume internal means public','Check its classification and ask the owner if needed','Forward it to a personal account'],answer:1,explanation:'Check access and sharing rules first. Internal access is not permission for external sharing.'},
   1:{question:'Which is a measurable key result rather than a task?',options:['Launch a new onboarding page','Reduce first-week setup failures from 12% to 6%','Hold a planning meeting'],answer:1,explanation:'A useful key result describes an observable outcome with evidence, not just an activity.'},
@@ -935,7 +983,7 @@ function openCharacterSetup(returnToMap){
 function leaveCharacterSetup(){goTo(characterReturnToMap?'map':'title');}
 function resetLocalProgress(){
   if(!window.confirm('Delete this prototype’s saved nickname, quest progress, and checklist from this browser? This cannot be undone.'))return;
-  try{localStorage.removeItem('nq2_state');localStorage.removeItem('nq2_onboarding_plan');}
+  try{localStorage.removeItem('nq2_state');localStorage.removeItem('nq2_onboarding_plan');localStorage.removeItem(STUDY_STORAGE_KEY);}
   catch(e){toast('Could not reset saved progress','Your browser prevented local storage changes.');return;}
   window.location.reload();
 }
@@ -1162,12 +1210,93 @@ function renderVideo(z,body){
           <article class="guide-card guide-practice"><h3>Try it yourself</h3><p>${escapeHTML(guide.practice)}</p><div class="source-note">Use a fictional or non-sensitive example. Don’t enter confidential, personal, or customer information.</div></article>
         </section>`:''}
         ${check?`<section class="lesson-check" aria-labelledby="lesson-check-title"><h3 id="lesson-check-title">Quick check: ${check.question}</h3><div class="lesson-check-options">${check.options.map((option,index)=>`<button type="button" onclick="answerLessonCheck(${index})">${escapeHTML(option)}</button>`).join('')}</div><div id="lesson-check-feedback" class="lesson-check-feedback" role="status" aria-live="polite"></div></section>`:''}
+        <section class="study-tools" id="study-tools" aria-label="Built-in study tools"></section>
         <div class="resource-links">${(LEARNING_SOURCES[GS.currentZone]||[]).map(source=>`<a class="resource-link" href="${source.url}" target="_blank" rel="noopener noreferrer">${source.label} ↗</a>`).join('')}</div>
         <div class="source-note">Public references provide context, not internal instructions. For current HR, security, privacy, or product requirements, use the approved internal resource for your role and location.</div>
         <button class="btn-game btn-primary-g" style="margin-top:20px;width:100%" onclick="nextPhase()">Continue to practice →</button>
       </div>
     </div>
   </div>`;
+  renderStudyTools();
+}
+function renderStudyTools(){
+  const container=document.getElementById('study-tools');
+  const zone=GS.currentZone;
+  const cards=STUDY_CARDS[zone]||[];
+  if(!container||!cards.length)return;
+  const index=Number.isInteger(STUDY_PROGRESS.indexes[zone])?((STUDY_PROGRESS.indexes[zone]%cards.length)+cards.length)%cards.length:0;
+  const known=Array.isArray(STUDY_PROGRESS.known[zone])?STUDY_PROGRESS.known[zone]:[];
+  const card=cards[index];
+  const note=typeof STUDY_PROGRESS.notes[zone]==='string'?STUDY_PROGRESS.notes[zone]:'';
+  const dueLabel=studyDueLabel(zone,index);
+  container.innerHTML=`<h3>🧠 Study lab</h3>
+    <div class="study-progress" aria-live="polite">Flashcard ${index+1} of ${cards.length} · ${known.length} learned · ${escapeHTML(dueLabel)}</div>
+    <div class="study-card"><div class="study-card-label">Recall before revealing</div><p>${escapeHTML(card.q)}</p><div class="study-card-answer" id="study-card-answer" hidden><div class="study-card-label">Answer</div><p>${escapeHTML(card.a)}</p></div></div>
+    <div class="study-actions"><button type="button" id="study-reveal" aria-expanded="false" onclick="flipStudyCard()">Show answer</button><button type="button" onclick="rateStudyCard('again')">Again · 10 min</button><button type="button" onclick="rateStudyCard('hard')">Hard · 1 day</button><button type="button" onclick="rateStudyCard('good')">Good · 3 days</button><button type="button" onclick="rateStudyCard('easy')">Easy · 7 days</button><button type="button" onclick="moveStudyCard(1)">Next card</button></div>
+    <div class="study-hint">Try answering from memory first. Rate honestly to schedule a review. Progress and due dates stay in this browser.</div>
+    <a class="resource-link" href="${STUDY_GUIDE_PDFS[zone]}" target="_blank" rel="noopener noreferrer">📄 Open this lesson’s study PDF</a>
+    <div class="study-notes"><label for="study-notes-input">Private study notes</label><textarea id="study-notes-input" maxlength="1500" placeholder="Write a question to ask your manager or a non-sensitive learning note…" oninput="saveStudyNote(this.value)">${escapeHTML(note)}</textarea><div class="study-hint" id="study-notes-status" aria-live="polite">Saved only in this browser. Don’t write confidential, personal, or customer information.</div><button type="button" class="study-notes-clear" onclick="clearStudyNote()">Clear notes for this lesson</button></div>`;
+}
+function flipStudyCard(){
+  const answer=document.getElementById('study-card-answer');
+  const button=document.getElementById('study-reveal');
+  if(!answer||!button)return;
+  answer.hidden=!answer.hidden;
+  button.textContent=answer.hidden?'Show answer':'Hide answer';
+  button.setAttribute('aria-expanded',String(!answer.hidden));
+}
+function moveStudyCard(direction,zoneOverride){
+  const zone=Number.isInteger(zoneOverride)?zoneOverride:GS.currentZone;
+  const cards=STUDY_CARDS[zone]||[];
+  if(!cards.length)return;
+  const current=Number.isInteger(STUDY_PROGRESS.indexes[zone])?STUDY_PROGRESS.indexes[zone]:0;
+  STUDY_PROGRESS.indexes[zone]=(current+direction+cards.length)%cards.length;
+  saveStudyProgress();
+  if(document.getElementById('study-center-content'))renderStudyCenter();else renderStudyTools();
+}
+function markStudyCard(remembered){
+  const zone=GS.currentZone;
+  const known=Array.isArray(STUDY_PROGRESS.known[zone])?STUDY_PROGRESS.known[zone]:[];
+  const current=Number.isInteger(STUDY_PROGRESS.indexes[zone])?STUDY_PROGRESS.indexes[zone]:0;
+  STUDY_PROGRESS.known[zone]=remembered?[...new Set([...known,current])]:known.filter(index=>index!==current);
+  saveStudyProgress();moveStudyCard(1);
+}
+function studyDueLabel(zone,index){
+  const record=STUDY_PROGRESS.schedule?.[zone]?.[index];
+  if(!record||!Number.isFinite(record.due))return 'New card';
+  const remaining=record.due-Date.now();
+  if(remaining<=0)return 'Due now';
+  if(remaining<3600000)return `Due in ${Math.ceil(remaining/60000)} min`;
+  if(remaining<86400000)return `Due in ${Math.ceil(remaining/3600000)} hr`;
+  return `Due in ${Math.ceil(remaining/86400000)} days`;
+}
+function rateStudyCard(rating,zoneOverride){
+  const zone=Number.isInteger(zoneOverride)?zoneOverride:GS.currentZone;
+  const cards=STUDY_CARDS[zone]||[];
+  if(!cards.length)return;
+  const index=Number.isInteger(STUDY_PROGRESS.indexes[zone])?STUDY_PROGRESS.indexes[zone]:0;
+  const delays={again:10*60*1000,hard:24*60*60*1000,good:3*24*60*60*1000,easy:7*24*60*60*1000};
+  if(!delays[rating])return;
+  if(!STUDY_PROGRESS.schedule[zone])STUDY_PROGRESS.schedule[zone]={};
+  STUDY_PROGRESS.schedule[zone][index]={due:Date.now()+delays[rating],lastReviewed:Date.now(),rating};
+  const known=Array.isArray(STUDY_PROGRESS.known[zone])?STUDY_PROGRESS.known[zone]:[];
+  STUDY_PROGRESS.known[zone]=['good','easy'].includes(rating)?[...new Set([...known,index])]:known.filter(cardIndex=>cardIndex!==index);
+  STUDY_PROGRESS.indexes[zone]=(index+1)%cards.length;
+  saveStudyProgress();
+  if(document.getElementById('study-center-content'))renderStudyCenter();else renderStudyTools();
+}
+function saveStudyNote(value,zoneOverride){
+  const zone=Number.isInteger(zoneOverride)?zoneOverride:GS.currentZone;
+  STUDY_PROGRESS.notes[zone]=String(value).slice(0,1500);
+  saveStudyProgress();
+  const status=document.getElementById('study-notes-status');
+  if(status)status.textContent='Saved only in this browser. Don’t write confidential, personal, or customer information.';
+}
+function clearStudyNote(zoneOverride){
+  const zone=Number.isInteger(zoneOverride)?zoneOverride:GS.currentZone;
+  STUDY_PROGRESS.notes[zone]='';
+  saveStudyProgress();
+  if(document.getElementById('study-center-content'))renderStudyCenter();else renderStudyTools();
 }
 function loadLessonVideo(){
   const video=LEARNING_VIDEOS[GS.currentZone];
@@ -1530,8 +1659,10 @@ function showOverlay(type){
           <div class="bo-name">${b.name}</div>
           <div class="bo-desc">${has?b.desc:'Complete more zones to unlock'}</div>
           ${has?'<div style="font-size:10px;color:var(--yellow);margin-top:8px">✨ Unlocked</div>':''}
-        </div>`;}).join('')}
+      </div>`;}).join('')}
       </div>`;
+  } else if(type==='study'){
+    renderStudyCenter();
   } else if(type==='okrs'){
     panel.innerHTML=`<button class="close-overlay" onclick="closeOverlay()">✕</button>
       <div class="overlay-title">🧭 Your first 90 days</div>
@@ -1540,6 +1671,80 @@ function showOverlay(type){
   const title=panel.querySelector('.overlay-title');if(title)title.id='overlay-title';
   panel.querySelector('.close-overlay')?.focus();
   if(type==='okrs')updateOnboardingPlanProgress();
+}
+let STUDY_CENTER_ZONE=0;
+let STUDY_CENTER_QUIZ_INDEX=0;
+let STUDY_CENTER_QUIZ_ANSWERED=false;
+let STUDY_CENTER_LAST_ANSWER=-1;
+function selectStudyTopic(zone){
+  if(!Number.isInteger(zone)||!STUDY_CARDS[zone])return;
+  STUDY_CENTER_ZONE=zone;STUDY_CENTER_QUIZ_INDEX=0;STUDY_CENTER_QUIZ_ANSWERED=false;STUDY_CENTER_LAST_ANSWER=-1;
+  renderStudyCenter();
+}
+function reviewNextDueCard(zone){
+  const cards=STUDY_CARDS[zone]||[];
+  if(!cards.length)return;
+  const schedule=STUDY_PROGRESS.schedule[zone]||{};
+  const now=Date.now();
+  const due=cards.map((_,index)=>({index,record:schedule[index]})).filter(item=>item.record&&item.record.due<=now).sort((a,b)=>a.record.due-b.record.due);
+  const fresh=cards.map((_,index)=>index).filter(index=>!schedule[index]);
+  const future=cards.map((_,index)=>({index,record:schedule[index]})).filter(item=>item.record&&item.record.due>now).sort((a,b)=>a.record.due-b.record.due);
+  const target=due[0]?.index??fresh[0]??future[0]?.index??0;
+  STUDY_PROGRESS.indexes[zone]=target;
+  saveStudyProgress();renderStudyCenter();
+}
+function flipStudyCenterCard(){
+  const answer=document.getElementById('study-center-card-answer');
+  const button=document.getElementById('study-center-reveal');
+  if(!answer||!button)return;
+  answer.hidden=!answer.hidden;
+  button.textContent=answer.hidden?'Show answer':'Hide answer';
+  button.setAttribute('aria-expanded',String(!answer.hidden));
+}
+function answerStudyCenterQuiz(index){
+  if(STUDY_CENTER_QUIZ_ANSWERED)return;
+  const question=ZONES[STUDY_CENTER_ZONE].boss.questions[STUDY_CENTER_QUIZ_INDEX];
+  if(!question||!Number.isInteger(index)||!question.opts[index])return;
+  const result=STUDY_PROGRESS.quiz[STUDY_CENTER_ZONE]||{attempts:0,correct:0};
+  result.attempts++;
+  const correct=index===question.ans;
+  if(correct)result.correct++;
+  STUDY_PROGRESS.quiz[STUDY_CENTER_ZONE]=result;
+  STUDY_CENTER_LAST_ANSWER=index;STUDY_CENTER_QUIZ_ANSWERED=true;saveStudyProgress();renderStudyCenter();
+}
+function nextStudyCenterQuiz(){
+  const questions=ZONES[STUDY_CENTER_ZONE].boss.questions;
+  STUDY_CENTER_QUIZ_INDEX=(STUDY_CENTER_QUIZ_INDEX+1)%questions.length;
+  STUDY_CENTER_QUIZ_ANSWERED=false;STUDY_CENTER_LAST_ANSWER=-1;renderStudyCenter();
+}
+function openStudyLesson(zone){
+  closeOverlay();enterZone(zone);jumpToLessonVideo();
+}
+function renderStudyCenter(){
+  const panel=document.getElementById('overlay-panel');
+  if(!panel)return;
+  const zone=STUDY_CENTER_ZONE;
+  const cards=STUDY_CARDS[zone]||[];
+  const cardIndex=Number.isInteger(STUDY_PROGRESS.indexes[zone])?((STUDY_PROGRESS.indexes[zone]%cards.length)+cards.length)%cards.length:0;
+  const card=cards[cardIndex];
+  const question=ZONES[zone].boss.questions[STUDY_CENTER_QUIZ_INDEX%ZONES[zone].boss.questions.length];
+  const result=STUDY_PROGRESS.quiz[zone]||{attempts:0,correct:0};
+  const totalCards=Object.values(STUDY_CARDS).reduce((sum,deck)=>sum+deck.length,0);
+  const learnedCount=Object.entries(STUDY_CARDS).reduce((sum,[key,deck])=>sum+(Array.isArray(STUDY_PROGRESS.known[key])?STUDY_PROGRESS.known[key].length:0),0);
+  const dueCount=Object.entries(STUDY_PROGRESS.schedule||{}).reduce((sum,[key,schedule])=>sum+Object.values(schedule||{}).filter(item=>item&&Number.isFinite(item.due)&&item.due<=Date.now()).length,0);
+  const newCount=totalCards-Object.values(STUDY_PROGRESS.schedule||{}).reduce((sum,schedule)=>sum+Object.keys(schedule||{}).length,0);
+  const note=typeof STUDY_PROGRESS.notes[zone]==='string'?STUDY_PROGRESS.notes[zone]:'';
+  const savedAnswer=STUDY_CENTER_QUIZ_ANSWERED?`<div class="study-quiz-feedback" role="status">${STUDY_CENTER_QUIZ_ANSWERED?((STUDY_CENTER_LAST_ANSWER===question.ans)?'Correct. ':'Not quite. '):''}${escapeHTML(question.exp)}<button class="map-btn" style="margin-top:10px" onclick="nextStudyCenterQuiz()">Next question →</button></div>`:'';
+  panel.innerHTML=`<button class="close-overlay" onclick="closeOverlay()" aria-label="Close study center">✕</button>
+    <div class="overlay-title" id="overlay-title">🧠 Study Center</div>
+    <div id="study-center-content">
+    <p class="plan-intro">Choose any topic, review cards on a spaced schedule, test recall with mixed questions, and open its printable pack.</p>
+    <div class="study-center-block"><h3>Your progress</h3><div class="study-progress">${learnedCount} of ${totalCards} cards marked learned · ${dueCount} due now · ${newCount} new · notes and scores saved on this browser</div><div class="plan-progress" role="progressbar" aria-label="Flashcard mastery" aria-valuemin="0" aria-valuemax="${totalCards}" aria-valuenow="${learnedCount}"><div class="plan-progress-fill" style="width:${Math.round(learnedCount/totalCards*100)}%"></div></div></div>
+    <div class="study-topic-grid">${ZONES.map((topic,index)=>{const deck=STUDY_CARDS[index];const knownCount=Array.isArray(STUDY_PROGRESS.known[index])?STUDY_PROGRESS.known[index].length:0;const scheduled=STUDY_PROGRESS.schedule[index]||{};const due=Object.values(scheduled).filter(item=>item&&item.due<=Date.now()).length;return`<button type="button" class="study-topic${index===zone?' active':''}" aria-pressed="${index===zone}" onclick="selectStudyTopic(${index})"><strong>${topic.icon} ${escapeHTML(topic.name)}</strong><span>${knownCount}/${deck.length} learned · ${due} due · PDF ready</span></button>`;}).join('')}</div>
+    <div class="study-center-block"><h3>${ZONES[zone].icon} ${escapeHTML(ZONES[zone].name)} · spaced-repetition card</h3><div class="study-progress">Card ${cardIndex+1} of ${cards.length} · ${escapeHTML(studyDueLabel(zone,cardIndex))}</div><div class="study-card"><div class="study-card-label">Recall first</div><p>${escapeHTML(card.q)}</p><div class="study-card-answer" id="study-center-card-answer" hidden><div class="study-card-label">Suggested answer</div><p>${escapeHTML(card.a)}</p></div></div><div class="study-actions"><button type="button" id="study-center-reveal" aria-expanded="false" onclick="flipStudyCenterCard()">Show answer</button><button type="button" onclick="rateStudyCard('again',${zone})">Again · 10 min</button><button type="button" onclick="rateStudyCard('hard',${zone})">Hard · 1 day</button><button type="button" onclick="rateStudyCard('good',${zone})">Good · 3 days</button><button type="button" onclick="rateStudyCard('easy',${zone})">Easy · 7 days</button><button type="button" onclick="reviewNextDueCard(${zone})">Next due/new</button></div><div class="study-hint">Intervals are local review suggestions, not reminders. “Next due/new” prioritizes cards that are due or have not been studied.</div><a class="resource-link" href="${STUDY_GUIDE_PDFS[zone]}" target="_blank" rel="noopener noreferrer">📄 Open this topic’s study PDF</a><button class="map-btn" onclick="openStudyLesson(${zone})">Open full lesson and video</button></div>
+    <div class="study-center-block"><h3>🎯 Topic quiz · ${result.correct}/${result.attempts} correct</h3><div class="study-progress">Question ${(STUDY_CENTER_QUIZ_INDEX%ZONES[zone].boss.questions.length)+1} of ${ZONES[zone].boss.questions.length}</div><p>${escapeHTML(question.q)}</p><div class="study-quiz-options">${question.opts.map((option,index)=>{const answered=STUDY_CENTER_QUIZ_ANSWERED;const border=answered&&index===question.ans?'var(--green)':answered&&index===STUDY_CENTER_LAST_ANSWER?'var(--red)':'var(--border)';return`<button type="button" ${answered?'disabled':''} style="border-color:${border}" onclick="answerStudyCenterQuiz(${index})">${escapeHTML(option)}</button>`;}).join('')}</div>${savedAnswer}</div>
+    <div class="study-center-block study-notes"><label for="study-center-notes">Notes for ${escapeHTML(ZONES[zone].name)}</label><textarea id="study-center-notes" maxlength="1500" placeholder="Capture a non-sensitive takeaway or question…" oninput="saveStudyNote(this.value,${zone})">${escapeHTML(note)}</textarea><div class="study-hint" id="study-notes-status">Saved only in this browser. Don’t enter confidential, personal, or customer information.</div><button type="button" class="study-notes-clear" onclick="clearStudyNote(${zone})">Clear these notes</button></div>
+    </div>`;
 }
 const ONBOARDING_PLAN=[
   {id:'start',title:'Start here · first week',desc:'Set up the relationships, access, and clarity that make the rest of onboarding easier.',tasks:[

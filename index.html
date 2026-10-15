@@ -215,6 +215,43 @@ html,body{width:100%;min-height:100%;height:100%;overflow:hidden;font-family:'Sp
 /* ── Mini-game ── */
 .mg-wrap{width:100%}
 .mg-title{font-family:'Orbitron',sans-serif;font-size:15px;font-weight:700;margin-bottom:6px;color:var(--yellow)}
+.sim-shell{overflow:hidden;border:1px solid #DADCE0;border-radius:22px;background:#fff;box-shadow:0 5px 18px rgba(60,64,67,.08)}
+.sim-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;background:#F8F9FA;border-bottom:1px solid #E8EAED}
+.sim-kicker{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#5F6368}
+.sim-progress{font-size:11px;font-weight:700;color:#1A73E8;white-space:nowrap}
+.sim-board{padding:clamp(14px,3vw,24px);background:radial-gradient(ellipse at top,#E8F0FE 0%,#F8FBFF 58%,#fff 100%)}
+.sim-character-row{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.sim-avatar{width:62px;height:62px;flex:0 0 62px;display:grid;place-items:center;border:3px solid #fff;border-radius:20px;background:linear-gradient(145deg,#D2E3FC,#E8F0FE);font-size:34px;box-shadow:0 4px 12px rgba(60,64,67,.14)}
+.sim-character-name{font-weight:800;color:#202124;font-size:13px}.sim-character-role{margin-top:3px;color:#70757A;font-size:10px}
+.sim-speech{padding:14px 16px;border:1px solid #D2E3FC;border-radius:16px;background:#fff;color:#3C4043;font-size:13px;line-height:1.55;box-shadow:0 2px 7px rgba(60,64,67,.05)}
+.sim-object-prompt{margin:17px 0 11px;color:#202124;font-size:14px;font-weight:750;line-height:1.45}
+.sim-objects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.sim-object{min-width:0;min-height:115px;display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:12px;border:1px solid #DADCE0;border-radius:15px;background:#fff;color:#3C4043;text-align:left;cursor:pointer;box-shadow:0 2px 6px rgba(60,64,67,.04);transition:transform .16s,border-color .16s,box-shadow .16s}
+.sim-object:hover:not(:disabled){transform:translateY(-2px);border-color:#AECBFA;box-shadow:0 5px 12px rgba(60,64,67,.1)}
+.sim-object:focus-visible{outline:3px solid #1A73E8;outline-offset:2px}
+.sim-object:disabled{cursor:default}.sim-object.good{border-color:#34A853;background:#E6F4EA}.sim-object.needs-work{border-color:#FBBC04;background:#FEF7E0}
+.sim-object-icon{font-size:25px;line-height:1}.sim-object-title{font-size:11px;font-weight:800;line-height:1.3}.sim-object-detail{font-size:10px;line-height:1.35;color:#70757A}
+.sim-feedback{display:none;margin-top:12px;padding:12px 14px;border-radius:13px;font-size:12px;line-height:1.5}
+.sim-feedback.good{display:block;background:#E6F4EA;color:#137333}.sim-feedback.try-again{display:block;background:#FEF7E0;color:#7F6000}
+.sim-action-row{display:flex;justify-content:flex-end;margin-top:13px}.sim-action-row[hidden]{display:none}.sim-next{min-height:46px;padding:11px 16px;border:0;border-radius:12px;background:#1A73E8;color:#fff;font:700 12px 'Space Grotesk',sans-serif;cursor:pointer}
+.sim-complete{text-align:center;padding:clamp(22px,5vw,40px)}.sim-complete-badge{font-size:42px}.sim-complete h3{margin:10px 0;color:#202124;font-size:20px}.sim-complete p{max-width:520px;margin:0 auto 14px;color:#5F6368;font-size:13px;line-height:1.55}
+.sim-reflection-label{display:block;margin:20px 0 7px;text-align:left;color:#202124;font-size:12px;font-weight:750}.sim-reflection{width:100%;min-height:82px;padding:11px;border:1px solid #DADCE0;border-radius:12px;background:#fff;color:#3C4043;font:12px/1.5 'Google Sans',Roboto,Arial,sans-serif;resize:vertical}.sim-reflection-note{margin:6px 0 16px;text-align:left;color:#70757A;font-size:10px;line-height:1.4}
+.sim-game-shell{overflow:hidden;border:1px solid #DADCE0;border-radius:22px;background:#fff;box-shadow:0 5px 18px rgba(60,64,67,.08)}
+.sim-world-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 16px;border-bottom:1px solid #E8EAED;background:#F8F9FA}
+.sim-world-title{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#3C4043}.sim-world-progress{font-size:11px;font-weight:700;color:#1A73E8;white-space:nowrap}
+.sim-world-wrap{position:relative;background:#DDEBDD}.sim-world{display:block;width:100%;aspect-ratio:2/1;max-height:420px;min-height:210px;touch-action:none;outline:none}.sim-world:focus-visible{box-shadow:inset 0 0 0 4px #1A73E8}
+.sim-world-hint{position:absolute;left:10px;top:10px;max-width:calc(100% - 20px);padding:7px 10px;border:1px solid rgba(218,220,224,.95);border-radius:10px;background:rgba(255,255,255,.94);color:#3C4043;font-size:10px;font-weight:650;pointer-events:none}
+.sim-briefing{padding:14px 16px;border-bottom:1px solid #E8EAED;background:#fff}.sim-briefing-label{display:block;color:#1A73E8;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.sim-briefing p{margin:6px 0 0;color:#3C4043;font-size:12px;line-height:1.55}.sim-briefing strong{color:#202124}
+.sim-world-controls{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px 14px;border-top:1px solid #E8EAED;background:#fff}
+.sim-dpad{display:grid;grid-template-columns:repeat(3,48px);grid-template-rows:repeat(2,48px);gap:4px;justify-content:center;touch-action:none}
+.sim-pad-button{min-width:48px;min-height:48px;padding:0;border:1px solid #DADCE0;border-radius:12px;background:#F8F9FA;color:#3C4043;font-size:17px;font-weight:800;touch-action:none;user-select:none;-webkit-user-select:none}
+.sim-pad-up{grid-column:2;grid-row:1}.sim-pad-left{grid-column:1;grid-row:2}.sim-pad-down{grid-column:2;grid-row:2}.sim-pad-right{grid-column:3;grid-row:2}
+.sim-interact{min-width:150px;min-height:50px;padding:10px 14px;border:0;border-radius:13px;background:#1A73E8;color:#fff;font:700 12px 'Space Grotesk',sans-serif;cursor:pointer}.sim-interact:disabled{background:#E8EAED;color:#80868B;cursor:not-allowed}
+.sim-destination-list{display:flex;flex-wrap:wrap;gap:7px;padding:0 14px 14px;background:#fff}.sim-destination{min-height:42px;padding:8px 10px;border:1px solid #DADCE0;border-radius:11px;background:#fff;color:#3C4043;font:600 10px 'Space Grotesk',sans-serif;cursor:pointer}.sim-destination:hover{border-color:#AECBFA;background:#F8FBFF}
+.sim-feedback{display:none;margin:0 14px 14px;padding:12px 14px;border-radius:13px;font-size:12px;line-height:1.5}.sim-feedback.good{display:block;background:#E6F4EA;color:#137333}.sim-feedback.try-again{display:block;background:#FEF7E0;color:#7F6000}
+.sim-action-row{display:flex;justify-content:flex-end;gap:8px;margin:0 14px 14px}.sim-action-row[hidden]{display:none}.sim-retry{min-height:46px;padding:10px 13px;border:1px solid #DADCE0;border-radius:12px;background:#fff;color:#3C4043;font:700 11px 'Space Grotesk',sans-serif;cursor:pointer}
+@media(max-width:560px){.sim-world{min-height:220px}.sim-world-controls{grid-template-columns:1fr;justify-items:center}.sim-dpad{grid-row:2}.sim-interact{grid-row:1;width:100%}.sim-destination-list{display:grid;grid-template-columns:1fr}.sim-destination{text-align:left}.sim-world-hint{font-size:9px}}
+@media(max-width:560px){.sim-objects{grid-template-columns:1fr}.sim-object{min-height:72px;display:grid;grid-template-columns:34px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:9px;padding:11px}.sim-object-icon{grid-column:1;grid-row:1 / span 2}.sim-object-title,.sim-object-detail{grid-column:2}.sim-object-detail{align-self:start}}
 .mg-desc{font-size:12px;color:var(--t2);margin-bottom:20px}
 .mg-score-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .mg-score-val{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700;color:var(--cyan)}
@@ -823,7 +860,7 @@ button:focus-visible,.char-card:focus-visible,.zone-node:focus-visible,input:foc
         <button class="btn-start" id="title-cta" onclick="openCharacterSetup(false)">Build your explorer&nbsp; <span aria-hidden="true">→</span></button>
         <button class="btn-game btn-secondary-g" id="edit-profile-btn" style="display:none" onclick="openCharacterSetup(true)">Edit player</button>
       </div>
-      <p class="title-save-note">No account needed · Your nickname and progress stay in this browser</p>
+      <p class="title-save-note">No account needed · 20–30 minutes at a thoughtful pace · No timer · Checkpoints save here</p>
       <button class="map-btn title-reset" id="reset-progress-btn" style="display:none" onclick="resetLocalProgress()">Reset saved progress on this browser</button>
     </section>
     <aside class="quest-preview" aria-label="What you’ll explore">
@@ -906,7 +943,7 @@ button:focus-visible,.char-card:focus-visible,.zone-node:focus-visible,input:foc
   </div>
 
   <section class="map-overview" aria-label="Mission progress">
-    <div class="map-welcome"><p class="map-eyebrow"><span class="live-dot"></span> YOUR LEARNING ROUTE</p><h1>Welcome to your first week<span id="map-player-greeting"></span></h1><p>There’s no perfect order. Pick a topic, explore a real-world scenario, and keep what’s useful.</p></div>
+    <div class="map-welcome"><p class="map-eyebrow"><span class="live-dot"></span> YOUR LEARNING ROUTE</p><h1>Welcome to your first week<span id="map-player-greeting"></span></h1><p>Seven stand-alone missions. Allow about 20–30 minutes for the full route, or play one at a time. No timer; checkpoints save in this browser.</p></div>
     <div class="map-overview-progress"><div class="route-count"><strong id="map-completion-count">0</strong><span>of 7<br>topics explored</span></div><div class="route-progress-track" id="map-progress-track" role="progressbar" aria-label="Topics explored" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="route-progress-fill" id="map-completion-bar"></div></div><button class="map-continue" id="map-next-action" onclick="continueQuest()">Start your first mission <span aria-hidden="true">→</span></button></div>
   </section>
   <div class="map-body">
@@ -1213,6 +1250,54 @@ const LEARNING_SOURCES={
   ]
 };
 
+const LESSON_SIMULATIONS=[
+  {character:'Sam',role:'New teammate · mission studio',avatar:'🧑‍💻',intro:'A teammate asks how your project should balance a business request with a user need. Explore the room and choose the most useful next step.',takeaway:'Connect the team’s work to user needs, ask for context, and use current team guidance—not slogans—to make the decision.',stages:[
+    {prompt:'What should Sam open first to understand the decision?',objects:[{icon:'📣',title:'Public mission',detail:'Start with broad company context',good:false,feedback:'Useful context, but it does not explain this team’s specific trade-offs.'},{icon:'🗺️',title:'Team goals & user evidence',detail:'Connect the work to people affected',good:true,feedback:'Strong move. Team priorities and relevant user evidence make the discussion concrete.'},{icon:'📈',title:'Revenue chart only',detail:'Decide from one metric',good:false,feedback:'One metric can hide user impact, quality, or longer-term risks. Ask what evidence matters.'}]},
+    {prompt:'The goals still leave a trade-off unclear. What should Sam do next?',objects:[{icon:'💬',title:'Ask the owner',detail:'Clarify context and decision criteria',good:true,feedback:'Good. Ask the accountable owner how the team weighs user impact, evidence, and constraints.'},{icon:'⚡',title:'Choose quickly',detail:'Skip discussion to save time',good:false,feedback:'Speed without context can create avoidable rework. Confirm decision ownership and relevant review.'},{icon:'📢',title:'Share the draft publicly',detail:'Post internal details outside',good:false,feedback:'Keep internal material in approved spaces and respect its access rules.'}]},
+    {prompt:'A test improves sign-ups, but support reports that new users are confused. What should Sam bring to the review?',objects:[{icon:'🧪',title:'User evidence + quality',detail:'Check the benefit and the friction',good:true,feedback:'Strong review. Compare the intended user outcome with support evidence, quality, and relevant safeguards before deciding whether to iterate or expand.'},{icon:'📈',title:'The metric only',detail:'Ignore the user reports',good:false,feedback:'A positive aggregate metric can hide friction for some users. Pair quantitative results with appropriate qualitative evidence.'},{icon:'🚀',title:'Expand immediately',detail:'Skip the agreed review',good:false,feedback:'Do not bypass the team’s launch or review process. Share the evidence with the accountable decision-makers first.'}]}
+  ]},
+  {character:'Alex',role:'Project partner · planning room',avatar:'🧑‍🚀',intro:'A project has several requests but limited capacity. Help Alex turn a vague priority into a clear, measurable outcome.',takeaway:'Describe the outcome, measure, scope, owner, and timing; confirm the current planning cycle with the team.',stages:[
+    {prompt:'Which planning object is the best starting point?',objects:[{icon:'🧾',title:'Task checklist',detail:'Count work items completed',good:false,feedback:'Tasks show activity, but not whether the intended outcome improved.'},{icon:'🎯',title:'User outcome',detail:'State who benefits and what changes',good:true,feedback:'Good start. An objective should describe the meaningful change the team wants to create.'},{icon:'🗣️',title:'Vague ambition',detail:'“Make everything better”',good:false,feedback:'Ambition needs a clear focus so the team can align and learn.'}]},
+    {prompt:'Now make progress observable. Which measure should Alex attach?',objects:[{icon:'📊',title:'Baseline + target',detail:'Define measure, cohort, and date',good:true,feedback:'Strong. This makes the result testable and gives the team a shared point of reference.'},{icon:'✅',title:'Ship the feature',detail:'Treat delivery as the outcome',good:false,feedback:'Shipping may be a milestone, but it does not prove users experienced the intended benefit.'},{icon:'🔢',title:'Pick a number later',detail:'Leave the target undefined',good:false,feedback:'Agree on a relevant measure and target with the accountable team before tracking progress.'}]},
+    {prompt:'Halfway through the cycle, the key result is behind plan. What should Alex do?',objects:[{icon:'🔎',title:'Review the evidence',detail:'Share causes, risks, and options',good:true,feedback:'Good. Bring the current evidence and constraints to the team, learn why progress differs, and agree whether to adapt the work or target.'},{icon:'🟢',title:'Change the metric quietly',detail:'Make the dashboard look green',good:false,feedback:'Changing a measure to conceal missed progress breaks trust. Record agreed changes transparently and preserve the learning.'},{icon:'🔥',title:'Pressure the team',detail:'Sacrifice quality for the number',good:false,feedback:'Avoid incentives that drive shortcuts or overwork. Discuss scope, dependencies, and support with the accountable team.'}]}
+  ]},
+  {character:'Jordan',role:'Product partner · experiment lab',avatar:'🧑‍🔬',intro:'The team has a promising idea but limited evidence. Help Jordan choose a responsible next experiment.',takeaway:'Start from the user problem, test the smallest useful assumption, and involve required quality, privacy, and accessibility reviews.',stages:[
+    {prompt:'Which object helps the team understand the problem?',objects:[{icon:'💡',title:'Big launch idea',detail:'Commit before learning',good:false,feedback:'The idea may be promising, but a large commitment before testing increases risk.'},{icon:'🗣️',title:'User signal',detail:'Review suitable research and evidence',good:true,feedback:'Good. Appropriate user evidence helps clarify whether the problem is real and important.'},{icon:'🏁',title:'Competitor rumor',detail:'Treat hearsay as proof',good:false,feedback:'Unverified claims are a weak basis for decisions. Gather evidence that fits the question.'}]},
+    {prompt:'What should Jordan build to learn safely?',objects:[{icon:'🧪',title:'Small prototype',detail:'Test one clear assumption',good:true,feedback:'Good experiment design: learn quickly with a narrow test and a clear success signal.'},{icon:'🚀',title:'Full launch',detail:'Skip the review checkpoints',good:false,feedback:'Launch scope and reviews should match impact and risk. Follow the team’s required process.'},{icon:'📉',title:'No test',detail:'Wait for perfect certainty',good:false,feedback:'Teams can often learn with a bounded, reversible test rather than waiting indefinitely.'}]},
+    {prompt:'The prototype works for most testers, but keyboard users cannot complete the main task. What next?',objects:[{icon:'♿',title:'Include accessibility review',detail:'Learn with affected users before scaling',good:true,feedback:'Good. Treat the barrier as meaningful evidence, involve the right accessibility expertise, and refine the design before a broader release.'},{icon:'📊',title:'Average the result',detail:'Let the majority decide',good:false,feedback:'An overall average can conceal serious barriers. Segment evidence responsibly and investigate who is being left out.'},{icon:'🏁',title:'Launch as-is',detail:'Fix access after adoption',good:false,feedback:'Do not dismiss a known access barrier. Follow the appropriate review and release process before expanding.'}]}
+  ]},
+  {character:'Riley',role:'Project teammate · sharing desk',avatar:'🧑‍💻',intro:'Riley needs to send a working document to a project partner. The sharing panel shows several access options—choose carefully.',takeaway:'Use approved tools, least-necessary access, and current policy. Verify the recipient and ask the document owner if unsure.',stages:[
+    {prompt:'Which sharing control should Riley inspect first?',objects:[{icon:'🔗',title:'Anyone with link',detail:'Open access for convenience',good:false,feedback:'Broad link access may expose information beyond the intended audience. Check classification and policy.'},{icon:'👤',title:'Named recipients',detail:'Verify identities and need',good:true,feedback:'Good. Confirm the recipients are correct and need access for the work.'},{icon:'📨',title:'Personal email',detail:'Forward a copy externally',good:false,feedback:'Use approved company tools and never move work data to personal accounts without authorization.'}]},
+    {prompt:'The owner is not sure whether the document can be shared. What next?',objects:[{icon:'🛡️',title:'Check guidance & owner',detail:'Confirm classification and approval',good:true,feedback:'Right. Follow current handling guidance and ask the owner or security contact if the classification is unclear.'},{icon:'⚡',title:'Send it anyway',detail:'Resolve access after sharing',good:false,feedback:'Pause before sharing. Access decisions should be made before information leaves its intended boundary.'},{icon:'📷',title:'Take a screenshot',detail:'Bypass the sharing settings',good:false,feedback:'Changing the format does not remove the information-handling obligation.'}]},
+    {prompt:'A partner asks Riley to email the spreadsheet to a personal account before a deadline. What is the safest response?',objects:[{icon:'🧭',title:'Find an approved route',detail:'Verify need, classification, and access',good:true,feedback:'Good. Explain that you need to verify the information’s classification and approved sharing method, then ask the owner or security contact if uncertain.'},{icon:'📨',title:'Send it to save time',detail:'Trust the deadline request',good:false,feedback:'A deadline does not change access rules. Pause and use approved tools and recipients.'},{icon:'🧩',title:'Remove a few rows',detail:'Assume the rest is safe',good:false,feedback:'Partial data may still be sensitive or identifying. Do not make an informal redaction decision without guidance.'}]}
+  ]},
+  {character:'Casey',role:'New hire · manager check-in',avatar:'🧑‍💼',intro:'Casey has a check-in with their manager and feels unsure about priorities. Help them make the conversation useful and supportive.',takeaway:'Bring specific questions, share progress and blockers, agree on priorities and owners, and use the team’s feedback cadence.',stages:[
+    {prompt:'What should Casey put in the meeting space?',objects:[{icon:'📝',title:'Short agenda',detail:'Priorities, questions, blockers',good:true,feedback:'Good preparation. A brief agenda helps both people use the time well.'},{icon:'🤐',title:'No questions',detail:'Wait for the manager to guess',good:false,feedback:'It is reasonable to ask for context or support. Share what is unclear and what you have tried.'},{icon:'📚',title:'Every detail',detail:'Bring an unstructured data dump',good:false,feedback:'A concise summary and focused questions make it easier to agree on next steps.'}]},
+    {prompt:'A priority still conflicts with another assignment. What should Casey do?',objects:[{icon:'🔀',title:'Clarify trade-offs',detail:'Ask what to prioritize and who decides',good:true,feedback:'Good. Surface the conflict early and agree on priority, owner, and follow-up.'},{icon:'🌙',title:'Work late silently',detail:'Hide the capacity issue',good:false,feedback:'Silence can delay support and create burnout. Raise capacity concerns respectfully.'},{icon:'📣',title:'Escalate publicly first',detail:'Skip a direct clarification',good:false,feedback:'Start with the appropriate manager or channel unless safety, conduct, or policy concerns require another route.'}]},
+    {prompt:'A teammate asks Casey for feedback after a milestone slipped. Which response is most constructive?',objects:[{icon:'🧭',title:'Specific + supportive',detail:'Share an example, impact, and next step',good:true,feedback:'Useful feedback describes observable behavior, its impact, and a practical next step. Ask what support would help and invite the other person’s view.'},{icon:'🏷️',title:'Label their character',detail:'Call them careless',good:false,feedback:'Personal labels are hard to act on and can damage trust. Focus on the work, facts, impact, and support.'},{icon:'📢',title:'Correct them publicly',detail:'Use the group to make a point',good:false,feedback:'Choose a respectful, appropriate setting for feedback. Public correction can undermine dignity and psychological safety.'}]}
+  ]},
+  {character:'Taylor',role:'New teammate · first-weeks planner',avatar:'🧑‍🎓',intro:'Taylor is beginning a new role. Build a steady start by choosing what to learn, who to align with, and how to contribute.',takeaway:'Treat the first 90 days as a flexible planning prompt: learn context, align with your manager, contribute at a suitable scope, and review together.',stages:[
+    {prompt:'What belongs in Taylor’s first-week toolkit?',objects:[{icon:'📚',title:'Role & team context',detail:'Goals, users, systems, norms',good:true,feedback:'Good. Learn the role, users, team goals, working agreements, and where current guidance lives.'},{icon:'🏃',title:'Immediate big launch',detail:'Commit before understanding',good:false,feedback:'Early contribution matters, but first understand context, quality expectations, and dependencies.'},{icon:'🕵️',title:'Guess the unwritten rules',detail:'Avoid asking questions',good:false,feedback:'Ask your manager and teammates about norms and expectations; assumptions create unnecessary friction.'}]},
+    {prompt:'How should Taylor plan a first contribution?',objects:[{icon:'🧩',title:'Agree a scoped task',detail:'Set owner, support, and check-in',good:true,feedback:'Strong. A well-scoped contribution creates learning while keeping expectations clear.'},{icon:'🏆',title:'Promise a fixed outcome',detail:'Ignore dependencies and timing',good:false,feedback:'Avoid promises before you understand scope and constraints. Agree on a realistic checkpoint.'},{icon:'🛑',title:'Wait without a plan',detail:'Avoid contributing at all',good:false,feedback:'Ask for a suitable first contribution and the support needed to deliver it.'}]},
+    {prompt:'At week six, Taylor has learned from users and found one unresolved dependency. How should the check-in go?',objects:[{icon:'🗂️',title:'Share learning + blocker',detail:'Agree one next milestone together',good:true,feedback:'Strong check-in. Summarize what you learned, show appropriate evidence, name the dependency, and agree on support and a realistic next milestone.'},{icon:'🎭',title:'Hide the uncertainty',detail:'Report only polished wins',good:false,feedback:'Hiding uncertainty delays help. Be clear about what is known, what is not, and what you plan to learn next.'},{icon:'🏁',title:'Claim the full outcome',detail:'Overstate early progress',good:false,feedback:'Be accurate about contribution and results. A trustworthy update includes limits and dependencies.'}]}
+  ]},
+  {character:'Morgan',role:'Global project partner · shared workspace',avatar:'🧑‍🤝‍🧑',intro:'Morgan’s project spans several time zones and communication preferences. Help the team work clearly and fairly without making assumptions about anyone.',takeaway:'Ask people about preferences, make norms explicit, share time-zone costs, enable async participation, and use transparent incentives that protect quality and inclusion.',stages:[
+    {prompt:'A teammate is quiet in a fast meeting but contributes thoughtful notes later. What should Morgan open?',objects:[{icon:'🏷️',title:'A label about culture',detail:'Assume the reason from identity',good:false,feedback:'Avoid stereotypes. A person’s nationality or identity does not tell you their preferences.'},{icon:'💬',title:'A respectful check-in',detail:'Ask how they prefer to contribute',good:true,feedback:'Good. Ask the individual, share context in advance, and offer live and async routes.'},{icon:'🎤',title:'A surprise spotlight',detail:'Call on them without warning',good:false,feedback:'Unexpectedly putting someone on the spot may not help. Agree on inclusive participation options.'}]},
+    {prompt:'A reward metric boosts speed, but people are skipping quality checks. Which object should Morgan use?',objects:[{icon:'📈',title:'Balanced scorecard',detail:'Review quality, safety, and outcomes',good:true,feedback:'Strong. Surface side effects and use clear, fair measures that do not reward unsafe shortcuts.'},{icon:'🥇',title:'Speed-only trophy',detail:'Reward the fastest output',good:false,feedback:'A single speed metric can distort behavior. Include quality, safety, and team outcomes.'},{icon:'🗓️',title:'Fixed meeting time',detail:'Make the same group absorb it',good:false,feedback:'Time-zone burdens should be visible; rotate inconvenient times where practical and document decisions for async contributors.'}]},
+    {prompt:'A new teammate asks whether an incentive is guaranteed and how the team will recognize contributions. What should Morgan say?',objects:[{icon:'📘',title:'Verify official terms',detail:'Use current offer or plan documents',good:true,feedback:'Good. Pay, equity, bonuses, leave, and benefits depend on role, location, plan, and eligibility. Direct the person to current official documents and the appropriate HR contact; never promise a benefit informally.'},{icon:'🤝',title:'Promise what seems fair',detail:'Give an informal guarantee',good:false,feedback:'Do not make compensation promises. Only current authorized documents and HR channels can confirm eligibility.'},{icon:'🏆',title:'Reward visibility only',detail:'Ignore less-visible teamwork',good:false,feedback:'Recognition criteria should be clear and role-relevant. Consider quality, collaboration, and behind-the-scenes contributions, not just visible speed.'}]}
+  ]}
+];
+
+const LESSON_SCENE_BRIEFINGS=[
+  ['A feature request arrives with a tight date. Your team has a goal, but the user impact is not yet clear. Find the project context and decide what evidence the team should weigh.','Two stakeholders value different outcomes. The decision owner has not said which trade-offs matter most. Help Sam get the right context before the team commits.','A test improves sign-ups while support reports confusion. The team must reconcile measures with user experience and required review—not celebrate one metric in isolation.'],
+  ['Several requests compete for a small team. The first task is to name the outcome that matters, not just the work the team will do.','A useful objective now has a measure, but the team still needs a baseline, scope, target, owner, and date to interpret progress.','The key result is behind plan at mid-cycle. The team has evidence and options; choose a transparent way to learn and adapt without hiding the signal.'],
+  ['The team has a promising idea and only a few early comments. Before choosing a solution, understand what problem those signals actually represent.','A hypothesis is clear. Pick an experiment small enough to learn from, with a success signal and reviews appropriate to its risk.','Most testers succeed, but keyboard users hit a barrier. The next move should include the people and expertise needed to make the experience accessible.'],
+  ['Riley needs to share a work document with a partner. Confirm who needs it and which access route is appropriate before granting access.','The owner cannot confirm the document’s classification. A deadline is approaching, but the information still needs to be handled safely.','A partner asks for a personal-email copy to save time. Find a compliant path and raise the deadline conflict rather than bypassing controls.'],
+  ['Casey has a first check-in with their manager and wants to leave with useful direction. Shape the conversation around questions and support.','Two assignments compete for the same time. The manager needs enough context to help resolve the priority and ownership.','A teammate asks for feedback after a missed milestone. Choose a response that is specific, respectful, and focused on helping the work improve.'],
+  ['Taylor is new to the team. Build an initial map of the role, users, goals, working agreements, and where trusted guidance lives.','Taylor understands the context and is ready to contribute. Choose a first task that balances meaningful ownership with support and a realistic scope.','At week six, Taylor has useful learning and one unresolved dependency. Prepare a clear progress conversation that makes the next step actionable.'],
+  ['A teammate contributes thoughtfully in writing but less in a fast live meeting. Choose a way to invite their preference without guessing from identity.','The project spans time zones. Meeting costs and who gets access to decisions are becoming uneven; design a fairer collaboration pattern.','A speed-linked reward is creating unsafe shortcuts, and a teammate asks about eligibility. Address incentive side effects and direct compensation questions to authoritative sources.']
+];
+
 const LEARNING_VIDEOS={
   0:{id:'-zrLI-Osg88',title:'Psychological safety and employee voice',publisher:'Google Cloud · Public talk',url:'https://www.youtube.com/watch?v=-zrLI-Osg88'},
   1:{id:'mJB83EZtAjc',title:'How Google sets goals: OKRs',publisher:'GV · Public workshop',url:'https://www.youtube.com/watch?v=mJB83EZtAjc'},
@@ -1306,10 +1391,10 @@ let GS={
   lives:3,currentPhase:0,
   mgScore:0,mgTotal:0,mgCorrect:0,
   bossQ:0,bossAnswers:[],bossLives:3,
-  sessionZones:0
+  sessionZones:0,lessonSimulations:{}
 };
 function saveGS(){try{localStorage.setItem('nq2_state',JSON.stringify(GS));}catch(e){}}
-function loadGS(){try{const s=localStorage.getItem('nq2_state');if(s){const saved=JSON.parse(s);if(saved&&typeof saved==='object')GS={...GS,...saved};}if(!Array.isArray(GS.completedZones))GS.completedZones=[];if(!Array.isArray(GS.badges))GS.badges=[];if(GS.completedZones.length<ZONES.length)GS.badges=GS.badges.filter(id=>id!=='full_googler');}catch(e){}}
+function loadGS(){try{const s=localStorage.getItem('nq2_state');if(s){const saved=JSON.parse(s);if(saved&&typeof saved==='object')GS={...GS,...saved};}if(!Array.isArray(GS.completedZones))GS.completedZones=[];if(!Array.isArray(GS.badges))GS.badges=[];if(!GS.lessonSimulations||typeof GS.lessonSimulations!=='object'||Array.isArray(GS.lessonSimulations))GS.lessonSimulations={};if(GS.completedZones.length<ZONES.length)GS.badges=GS.badges.filter(id=>id!=='full_googler');}catch(e){}}
 loadGS();
 function escapeHTML(value){return String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));}
 
@@ -1364,9 +1449,11 @@ function renderMap(){
   const row=document.getElementById('zones-row');
   row.innerHTML=ZONES.map((z,i)=>{
     const done=GS.completedZones.includes(z.id);
+    const checkpoint=GS.lessonSimulations?.[z.id];
+    const inProgress=!done&&checkpoint&&Number.isInteger(checkpoint.stage);
     const avail=true;
     const locked=!avail;
-    return `<div class="zone-node${locked?' locked':''}" role="button" tabindex="0" aria-disabled="${locked}" aria-label="Topic ${i+1}: ${z.name}${done?', explored':locked?', locked':', open to explore'}" onclick="${locked?`toast('🔒 Locked','Complete Topic ${i} first!')`:('enterZone('+z.id+')')}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${locked?`toast('🔒 Locked','Complete Topic ${i} first!')`:`enterZone(${z.id})`}}">
+    return `<div class="zone-node${locked?' locked':''}" role="button" tabindex="0" aria-disabled="${locked}" aria-label="Topic ${i+1}: ${z.name}${done?', explored':inProgress?', mission in progress':locked?', locked':', open to explore'}" onclick="${locked?`toast('🔒 Locked','Complete Topic ${i} first!')`:('enterZone('+z.id+')')}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${locked?`toast('🔒 Locked','Complete Topic ${i} first!')`:`enterZone(${z.id})`}}">
       <div class="zone-bubble" style="background:${z.color}22;border-color:${done?'var(--green)':avail?z.color:'var(--border)'}">
         ${z.icon}
         ${done?'<span class="zone-done-stamp">✅</span>':''}
@@ -1374,7 +1461,7 @@ function renderMap(){
       </div>
       <div class="zone-label">${z.name}</div>
       <div class="zone-tag">${z.tag}</div>
-      <div class="zone-xp">+${z.xp} practice XP</div>
+      <div class="zone-xp">${inProgress?`Resume · scene ${Math.min(checkpoint.stage+1,3)} of 3`:`+${z.xp} practice XP`}</div>
     </div>
     ${i<ZONES.length-1?`<div class="zone-connector" style="width:20px;height:2px;background:${GS.completedZones.includes(z.id)?'var(--green)':'var(--border)'};align-self:flex-start;margin-top:38px;border-radius:1px"></div>`:''}`;
   }).join('');
@@ -1383,11 +1470,12 @@ function renderMap(){
   document.getElementById('map-completion-bar').style.width=`${Math.round(explored/ZONES.length*100)}%`;
   document.getElementById('map-progress-track').setAttribute('aria-valuenow',explored);
   document.getElementById('map-player-greeting').textContent=GS.playerName?`, ${GS.playerName}`:'';
-  document.getElementById('map-next-action').innerHTML=explored===ZONES.length?'Replay a learning topic <span aria-hidden="true">→</span>':explored?'Continue exploring <span aria-hidden="true">→</span>':'Start your first mission <span aria-hidden="true">→</span>';
+  const inProgress=ZONES.find(zone=>!GS.completedZones.includes(zone.id)&&GS.lessonSimulations?.[zone.id]&&Number.isInteger(GS.lessonSimulations[zone.id].stage));
+  document.getElementById('map-next-action').innerHTML=explored===ZONES.length?'Replay a learning topic <span aria-hidden="true">→</span>':inProgress?'Resume your mission <span aria-hidden="true">→</span>':explored?'Continue exploring <span aria-hidden="true">→</span>':'Start your first mission <span aria-hidden="true">→</span>';
 }
 
 function continueQuest(){
-  const next=ZONES.find(zone=>!GS.completedZones.includes(zone.id));
+  const next=ZONES.find(zone=>!GS.completedZones.includes(zone.id)&&GS.lessonSimulations?.[zone.id]&&Number.isInteger(GS.lessonSimulations[zone.id].stage))||ZONES.find(zone=>!GS.completedZones.includes(zone.id));
   enterZone(next?next.id:0);
 }
 
@@ -1414,6 +1502,7 @@ const PHASES=['cutscene','npc','video','minigame','boss','victory'];
 const PHASE_LABELS=['Welcome','Conversation','Learn','Practice','Check-in','Complete'];
 
 function enterZone(id){
+  if(GS.completedZones.includes(id)&&GS.lessonSimulations[id]){delete GS.lessonSimulations[id];saveGS();}
   GS.currentZone=id;GS.currentPhase=0;GS.lives=3;GS.bossLives=3;GS.bossQ=0;GS.bossAnswers=[];
   const z=ZONES[id];
   const zh=document.getElementById('zone-header');
@@ -1423,6 +1512,7 @@ function enterZone(id){
 }
 function leaveZone(){
   if(PHASES[GS.currentPhase]!=='victory'&&!window.confirm('Leave this topic? Your completed topics stay saved, but this lesson will restart if you return.'))return;
+  stopLessonSimulationWorld();
   returnToMap();
 }
 
@@ -1457,6 +1547,7 @@ function previousPhase(){
 }
 
 function renderPhase(){
+  if(typeof stopLessonSimulationWorld==='function')stopLessonSimulationWorld();
   const z=ZONES[GS.currentZone];
   const body=document.getElementById('zone-body');
   body.innerHTML='';body.scrollTop=0;
@@ -1708,7 +1799,102 @@ function answerLessonCheck(index){
 }
 
 // ── MINI-GAMES ──
+let activeLessonSimulation=null;
+let lessonSimulationStage=0;
+let lessonSimulationScore=0;
+let lessonSimulationResults=[];
+let lessonSimulationWorld=null;
+let lessonSimulationWorldCleanup=null;
 function renderMinigame(z,body){
+  activeLessonSimulation=LESSON_SIMULATIONS[GS.currentZone];
+  const saved=GS.lessonSimulations?.[GS.currentZone];
+  lessonSimulationStage=saved&&Number.isInteger(saved.stage)?Math.min(Math.max(saved.stage,0),activeLessonSimulation.stages.length):0;
+  lessonSimulationScore=saved&&Number.isFinite(saved.score)?Math.min(Math.max(saved.score,0),activeLessonSimulation.stages.length):0;
+  lessonSimulationResults=Array.isArray(saved?.results)?activeLessonSimulation.stages.map((_,index)=>Boolean(saved.results[index])):activeLessonSimulation.stages.map(()=>false);
+  stopLessonSimulationWorld();
+  body.innerHTML=`<div class="mg-wrap fade-in"><div class="section-title">🎮 Open-world mission</div><div class="mg-title">${escapeHTML(z.name)} · Mission ${GS.currentZone+1}</div><p class="mg-desc">Explore the original top-down city scene. Walk to a marked object and interact to make your choice. Use arrow keys or WASD, the touch pad, or tap a marker to move. Fictional workplace training; no real company systems are connected.</p><div id="lesson-simulation-mount"></div></div>`;
+  renderLessonSimulationStage();
+}
+function renderLessonSimulationStage(){
+  const mount=document.getElementById('lesson-simulation-mount');if(!mount||!activeLessonSimulation)return;
+  const sim=activeLessonSimulation;
+  stopLessonSimulationWorld();
+  if(lessonSimulationStage>=sim.stages.length){
+    const reflection=GS.lessonSimulations?.[GS.currentZone]?.reflection||'';
+    mount.innerHTML=`<div class="sim-shell sim-complete"><div class="sim-complete-badge">${lessonSimulationScore===sim.stages.length?'🌟':'🎮'}</div><h3>Mission debrief</h3><p>You earned ${lessonSimulationScore} of ${sim.stages.length} insight stars. This is a practice aid—not an employee rating. You can replay scenes and learn from each outcome.</p><p><strong>Carry this forward:</strong> ${escapeHTML(sim.takeaway)}</p><label class="sim-reflection-label" for="sim-reflection">What is one question or habit you’ll bring into your work?</label><textarea class="sim-reflection" id="sim-reflection" maxlength="500" placeholder="Write a short, non-sensitive note…" oninput="saveLessonSimulationReflection(this.value)">${escapeHTML(reflection)}</textarea><div class="sim-reflection-note">Saved only in this browser. Don’t enter confidential, personal, or customer information.</div><button type="button" class="sim-next" onclick="continueToPracticeGame()">Continue to the lesson challenge →</button></div>`;
+    return;
+  }
+  const stage=sim.stages[lessonSimulationStage];
+  const briefing=LESSON_SCENE_BRIEFINGS[GS.currentZone]?.[lessonSimulationStage]||sim.intro;
+  mount.innerHTML=`<div class="sim-game-shell"><div class="sim-world-head"><span class="sim-world-title">${escapeHTML(sim.character)}’s mission</span><span class="sim-world-progress">Scene ${lessonSimulationStage+1} of ${sim.stages.length} · ${lessonSimulationScore} insight stars</span></div><div class="sim-briefing"><span class="sim-briefing-label">Mission briefing · ${lessonSimulationStage+1}/3</span><p>${escapeHTML(briefing)}<br><strong>Objective:</strong> ${escapeHTML(stage.prompt)}</p></div><div class="sim-world-wrap"><canvas class="sim-world" id="lesson-sim-world" width="720" height="360" tabindex="0" aria-label="Top-down city mission. Move your character to an object to interact."></canvas><div class="sim-world-hint" id="sim-world-hint">Use arrow keys or WASD, the touch pad, or tap the map to walk.</div></div><div class="sim-character-row" style="padding:12px 14px 0;margin:0"><div class="sim-avatar" aria-hidden="true">${sim.avatar}</div><div><div class="sim-character-name">${escapeHTML(sim.character)} · ${escapeHTML(sim.role)}</div><div class="sim-character-role" id="sim-world-prompt">${escapeHTML(stage.prompt)}</div></div></div><div class="sim-world-controls"><div class="sim-dpad" role="group" aria-label="Movement controls"><button type="button" class="sim-pad-button sim-pad-up" data-move="up" aria-label="Move up">↑</button><button type="button" class="sim-pad-button sim-pad-left" data-move="left" aria-label="Move left">←</button><button type="button" class="sim-pad-button sim-pad-down" data-move="down" aria-label="Move down">↓</button><button type="button" class="sim-pad-button sim-pad-right" data-move="right" aria-label="Move right">→</button></div><button type="button" class="sim-interact" id="sim-interact" disabled>Walk to an object</button></div><div class="sim-destination-list" role="group" aria-label="Mission objects">${stage.objects.map((object,index)=>`<button type="button" class="sim-destination" data-destination="${index}">${object.icon} ${escapeHTML(object.title)} · ${escapeHTML(object.detail)}</button>`).join('')}</div><div id="sim-feedback" class="sim-feedback" role="status" aria-live="polite"></div><div id="sim-action-row" class="sim-action-row" hidden></div></div>`;
+  startLessonSimulationWorld(stage);
+}
+function stopLessonSimulationWorld(){if(lessonSimulationWorldCleanup){lessonSimulationWorldCleanup();lessonSimulationWorldCleanup=null;}lessonSimulationWorld=null;}
+function startLessonSimulationWorld(stage){
+  stopLessonSimulationWorld();
+  const canvas=document.getElementById('lesson-sim-world');if(!canvas)return;
+  const ctx=canvas.getContext('2d');if(!ctx)return;
+  const ratio=Math.min(window.devicePixelRatio||1,2);canvas.width=720*ratio;canvas.height=360*ratio;ctx.setTransform(ratio,0,0,ratio,0,0);
+  const points=[{x:140,y:178},{x:360,y:170},{x:580,y:178}];
+  const state={canvas,ctx,stage,points,x:360,y:330,target:null,keys:new Set(),nearby:-1,raf:0,running:true,interacted:false};lessonSimulationWorld=state;
+  const onKeyDown=event=>{const key=event.key.toLowerCase();if(['arrowup','arrowdown','arrowleft','arrowright','w','a','s','d'].includes(key)){event.preventDefault();state.keys.add(key);}if(key==='e'||key===' '){event.preventDefault();useNearbyLessonObject();}};
+  const onKeyUp=event=>state.keys.delete(event.key.toLowerCase());const onBlur=()=>state.keys.clear();
+  const moveTo=(x,y)=>{state.target={x:Math.max(24,Math.min(696,x)),y:Math.max(24,Math.min(336,y))};canvas.focus({preventScroll:true});};
+  const onCanvasPointer=event=>{if(state.interacted)return;const bounds=canvas.getBoundingClientRect();const x=(event.clientX-bounds.left)/bounds.width*720,y=(event.clientY-bounds.top)/bounds.height*360;const objectIndex=state.points.findIndex(point=>Math.hypot(x-point.x,y-point.y)<38);if(objectIndex>=0&&Math.hypot(state.x-state.points[objectIndex].x,state.y-state.points[objectIndex].y)<42){chooseLessonSimulationObject(objectIndex);return;}moveTo(x,y);};
+  const removers=[];
+  [...document.querySelectorAll('.sim-pad-button')].forEach(button=>{const code={up:'arrowup',down:'arrowdown',left:'arrowleft',right:'arrowright'}[button.dataset.move];const down=event=>{event.preventDefault();state.keys.add(code);button.setPointerCapture?.(event.pointerId);};const up=event=>{event.preventDefault();state.keys.delete(code);};button.addEventListener('pointerdown',down);button.addEventListener('pointerup',up);button.addEventListener('pointercancel',up);removers.push(()=>{button.removeEventListener('pointerdown',down);button.removeEventListener('pointerup',up);button.removeEventListener('pointercancel',up);});});
+  [...document.querySelectorAll('.sim-destination')].forEach(button=>{const setDestination=()=>{const point=state.points[Number(button.dataset.destination)];if(point)moveTo(point.x,point.y);};button.addEventListener('click',setDestination);removers.push(()=>button.removeEventListener('click',setDestination));});
+  const interact=()=>useNearbyLessonObject();canvas.addEventListener('pointerdown',onCanvasPointer);document.getElementById('sim-interact')?.addEventListener('click',interact);window.addEventListener('keydown',onKeyDown);window.addEventListener('keyup',onKeyUp);window.addEventListener('blur',onBlur);
+  const cleanup=()=>{state.running=false;cancelAnimationFrame(state.raf);canvas.removeEventListener('pointerdown',onCanvasPointer);document.getElementById('sim-interact')?.removeEventListener('click',interact);window.removeEventListener('keydown',onKeyDown);window.removeEventListener('keyup',onKeyUp);window.removeEventListener('blur',onBlur);removers.forEach(remove=>remove());};lessonSimulationWorldCleanup=cleanup;
+  const rounded=(x,y,width,height,radius,fill)=>{ctx.fillStyle=fill;ctx.beginPath();ctx.roundRect(x,y,width,height,radius);ctx.fill();};
+  const draw=()=>{
+    if(!state.running)return;
+    let dx=(state.keys.has('arrowright')||state.keys.has('d')?1:0)-(state.keys.has('arrowleft')||state.keys.has('a')?1:0);let dy=(state.keys.has('arrowdown')||state.keys.has('s')?1:0)-(state.keys.has('arrowup')||state.keys.has('w')?1:0);
+    if(dx||dy){const length=Math.hypot(dx,dy);state.x=Math.max(22,Math.min(698,state.x+dx/length*2.8));state.y=Math.max(22,Math.min(338,state.y+dy/length*2.8));state.target=null;}else if(state.target){const vx=state.target.x-state.x,vy=state.target.y-state.y,distance=Math.hypot(vx,vy);if(distance<3)state.target=null;else{state.x+=vx/distance*2.5;state.y+=vy/distance*2.5;}}
+    state.nearby=state.points.findIndex(point=>Math.hypot(state.x-point.x,state.y-point.y)<40);
+    const interactButton=document.getElementById('sim-interact');if(interactButton){interactButton.disabled=state.nearby<0||state.interacted;interactButton.textContent=state.nearby<0?'Walk to an object':`Interact · ${stage.objects[state.nearby].title}`;}
+    const hint=document.getElementById('sim-world-hint');if(hint)hint.textContent=state.nearby<0?'Explore the block · walk to a marker, then interact':`Nearby · ${stage.objects[state.nearby].title} — press E or tap Interact`;
+    const background=ctx.createLinearGradient(0,0,0,360);background.addColorStop(0,'#E8F2E8');background.addColorStop(1,'#D9EBD9');ctx.fillStyle=background;ctx.fillRect(0,0,720,360);
+    ctx.fillStyle='rgba(255,255,255,.36)';for(let x=12;x<720;x+=36)for(let y=12;y<360;y+=36)ctx.fillRect(x,y,2,2);
+    ctx.fillStyle='#BBC4C0';ctx.fillRect(0,244,720,70);ctx.fillRect(0,185,720,36);ctx.fillRect(0,0,720,32);ctx.strokeStyle='#F8F9FA';ctx.lineWidth=3;ctx.setLineDash([14,12]);ctx.beginPath();ctx.moveTo(0,279);ctx.lineTo(720,279);ctx.stroke();ctx.setLineDash([]);
+    const buildings=[{x:24,y:42,w:170,h:94,name:'TEAM HUB',color:'#D7E5F8'},{x:274,y:42,w:172,h:94,name:'PROJECT LAB',color:'#FCE8E6'},{x:524,y:42,w:172,h:94,name:'CITY STUDIO',color:'#FEF7E0'}];
+    buildings.forEach(building=>{rounded(building.x,building.y,building.w,building.h,13,building.color);for(let wx=building.x+14;wx<building.x+building.w-8;wx+=34)rounded(wx,building.y+15,20,23,5,'rgba(255,255,255,.68)');ctx.fillStyle='#5F6368';ctx.font='700 10px Arial';ctx.fillText(building.name,building.x+13,building.y+79);});
+    rounded(27,154,94,49,12,'#B9DDBB');rounded(596,151,90,54,12,'#B9DDBB');ctx.fillStyle='#3C4043';ctx.font='10px Arial';ctx.fillText('CAMPUS WALK',300,210);
+    state.points.forEach((point,index)=>{const active=state.nearby===index;ctx.beginPath();ctx.fillStyle=active?'rgba(26,115,232,.2)':'rgba(66,133,244,.14)';ctx.arc(point.x,point.y,active?29:24,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.fillStyle=active?'#1A73E8':'#4285F4';ctx.arc(point.x,point.y,17,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fff';ctx.font='18px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(stage.objects[index].icon,point.x,point.y+1);ctx.textAlign='start';ctx.textBaseline='alphabetic';const label=stage.objects[index].title;const width=Math.min(136,Math.max(82,ctx.measureText(label).width+16));rounded(point.x-width/2,point.y+23,width,23,7,'rgba(255,255,255,.96)');ctx.fillStyle='#3C4043';ctx.font='700 10px Arial';ctx.textAlign='center';ctx.fillText(label,point.x,point.y+38,128);ctx.textAlign='start';});
+    if(state.target){ctx.strokeStyle='rgba(26,115,232,.7)';ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(state.x,state.y);ctx.lineTo(state.target.x,state.target.y);ctx.stroke();ctx.setLineDash([]);}
+    const guideX=360,guideY=237;ctx.beginPath();ctx.fillStyle='rgba(60,64,67,.15)';ctx.ellipse(guideX,guideY+14,16,6,0,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.fillStyle='#1A73E8';ctx.arc(guideX,guideY,17,0,Math.PI*2);ctx.fill();ctx.lineWidth=3;ctx.strokeStyle='#fff';ctx.stroke();ctx.font='22px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(activeLessonSimulation.avatar,guideX,guideY+1);rounded(guideX-33,guideY+21,66,19,6,'rgba(255,255,255,.94)');ctx.fillStyle='#3C4043';ctx.font='700 9px Arial';ctx.fillText('MISSION GUIDE',guideX,guideY+34);
+    const bob=(dx||dy||state.target)?Math.sin(Date.now()/75)*2:0;ctx.beginPath();ctx.fillStyle='rgba(60,64,67,.17)';ctx.ellipse(state.x,state.y+14,15,6,0,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.fillStyle='#34A853';ctx.arc(state.x,state.y+bob,16,0,Math.PI*2);ctx.fill();ctx.lineWidth=3;ctx.strokeStyle='#fff';ctx.stroke();ctx.font='22px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(GS.playerEmoji||'🧑‍🚀',state.x,state.y+bob+1);ctx.textAlign='start';ctx.textBaseline='alphabetic';
+    rounded(588,8,122,56,9,'rgba(32,33,36,.82)');ctx.fillStyle='#fff';ctx.font='700 8px Arial';ctx.fillText('MISSION RADAR',596,20);ctx.strokeStyle='rgba(255,255,255,.4)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(600,39);ctx.lineTo(699,39);ctx.stroke();state.points.forEach(point=>{ctx.beginPath();ctx.fillStyle='#FBBC04';ctx.arc(601+point.x/720*96,27+point.y/360*27,3,0,Math.PI*2);ctx.fill();});ctx.beginPath();ctx.fillStyle='#34A853';ctx.arc(601+state.x/720*96,27+state.y/360*27,4,0,Math.PI*2);ctx.fill();
+    state.raf=requestAnimationFrame(draw);
+  };draw();
+}
+function useNearbyLessonObject(){if(lessonSimulationWorld&&lessonSimulationWorld.nearby>=0)chooseLessonSimulationObject(lessonSimulationWorld.nearby);}
+function saveLessonSimulationProgress(){
+  if(!GS.lessonSimulations||typeof GS.lessonSimulations!=='object')GS.lessonSimulations={};
+  const reflection=GS.lessonSimulations[GS.currentZone]?.reflection||'';
+  GS.lessonSimulations[GS.currentZone]={stage:lessonSimulationStage,score:lessonSimulationScore,results:lessonSimulationResults.slice(),reflection,updatedAt:Date.now()};
+  saveGS();
+}
+function saveLessonSimulationReflection(value){
+  if(!GS.lessonSimulations||typeof GS.lessonSimulations!=='object')GS.lessonSimulations={};
+  const progress=GS.lessonSimulations[GS.currentZone]||{stage:activeLessonSimulation?.stages.length||0,score:lessonSimulationScore,results:lessonSimulationResults.slice()};
+  progress.reflection=String(value).slice(0,500);progress.updatedAt=Date.now();GS.lessonSimulations[GS.currentZone]=progress;saveGS();
+}
+function chooseLessonSimulationObject(index){
+  const stage=activeLessonSimulation?.stages[lessonSimulationStage];if(!stage)return;
+  if(!lessonSimulationWorld||lessonSimulationWorld.nearby!==index||lessonSimulationWorld.interacted)return;
+  const object=stage.objects[index];if(!object)return;
+  lessonSimulationWorld.interacted=true;stopLessonSimulationWorld();
+  if(object.good&&!lessonSimulationResults[lessonSimulationStage])lessonSimulationScore++;
+  if(object.good)lessonSimulationResults[lessonSimulationStage]=true;
+  saveLessonSimulationProgress();
+  const feedback=document.getElementById('sim-feedback');if(feedback){feedback.className=`sim-feedback ${object.good?'good':'try-again'}`;feedback.textContent=`${object.good?'Strong choice.':'Think it through.'} ${object.feedback}`;}
+  const action=document.getElementById('sim-action-row');if(action){action.hidden=false;action.innerHTML=`<button type="button" class="sim-retry" onclick="retryLessonSimulationScene()">Try another approach</button><button type="button" class="sim-next" onclick="advanceLessonSimulation()">${lessonSimulationStage+1<activeLessonSimulation.stages.length?'Next scene →':'Finish mission →'}</button>`;}
+}
+function retryLessonSimulationScene(){renderLessonSimulationStage();}
+function advanceLessonSimulation(){lessonSimulationStage++;saveLessonSimulationProgress();renderLessonSimulationStage();}
+function continueToPracticeGame(){renderMinigameChallenge(ZONES[GS.currentZone],document.getElementById('zone-body'));}
+function renderMinigameChallenge(z,body){
   const mg=z.minigame;GS.mgScore=0;GS.mgCorrect=0;GS.mgTotal=mg.items.length;
   body.innerHTML=`<div class="mg-wrap fade-in">
     <div class="section-title">🎮 Mini-Game</div>

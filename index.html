@@ -97,6 +97,11 @@ html,body{width:100%;min-height:100%;height:100%;overflow:hidden;font-family:'Sp
 .map-footer{padding:16px 24px;display:flex;align-items:center;justify-content:center;gap:16px;border-top:1px solid var(--border);background:var(--bg1);flex-wrap:wrap}
 .map-btn{background:var(--bg2);border:1px solid var(--border);color:var(--t1);padding:8px 18px;border-radius:20px;font-size:12px;font-family:'Space Grotesk',sans-serif;cursor:pointer;transition:all .2s}
 .map-btn:hover{border-color:var(--blue);color:var(--blue)}
+.map-footer .map-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.menu-icon{width:17px;height:17px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 17px;color:var(--blue)}
+.menu-icon svg,.overlay-icon svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.overlay-title{display:flex;align-items:center;gap:10px}
+.overlay-icon{width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 24px;color:var(--blue)}
 .legend{display:flex;gap:16px;font-size:11px;color:var(--t2)}
 .leg-item{display:flex;align-items:center;gap:5px}
 
@@ -578,7 +583,8 @@ button:focus-visible,.char-card:focus-visible,.zone-node:focus-visible,input:foc
 .preview-avatar{position:absolute;z-index:4;bottom:23px;left:31%;width:48px;height:48px;display:grid;place-items:center;border:3px solid white;border-radius:18px;background:#fff;font-size:27px;box-shadow:0 5px 12px rgba(60,64,67,.2);transform:rotate(-5deg)}
 .preview-body{padding:16px 20px 18px}
 .preview-heading{display:flex;align-items:center;gap:12px}
-.preview-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:13px;background:#E8F0FE;font-size:20px}
+.preview-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:13px;background:#E8F0FE;color:#1A73E8}
+.preview-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .preview-heading strong,.preview-heading span{display:block}.preview-heading strong{font-size:14px}.preview-heading div>span{margin-top:3px;color:#70757A;font-size:11px}
 .preview-divider{height:1px;margin:15px 0;background:#E8EAED}
 .preview-features{display:grid;grid-template-columns:1fr 1fr;gap:10px;color:#5F6368;font-size:11px;font-weight:600}
@@ -586,6 +592,7 @@ button:focus-visible,.char-card:focus-visible,.zone-node:focus-visible,input:foc
 .title-stats{position:relative;z-index:1;width:min(100%,1160px);gap:12px;margin:6px auto 0;animation:none}
 .ts-item{display:flex;align-items:center;gap:11px;flex:1;min-width:0;padding:12px 14px;text-align:left;border-radius:16px}
 .stat-icon{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border-radius:12px;font-size:15px;font-weight:800}
+.stat-icon svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .stat-blue{background:#E8F0FE;color:#1A73E8}.stat-green{background:#E6F4EA}.stat-yellow{background:#FEF7E0}
 .ts-item strong,.ts-item small{display:block}.ts-item strong{color:#202124;font-size:12px}.ts-item small{margin-top:3px;color:#70757A;font-size:10px}
 #s-title>.prototype-notice{position:relative;z-index:1;width:min(100%,1160px);max-width:none;margin:0 auto;padding:9px 12px;border-radius:11px;text-align:left;font-size:10px}
@@ -828,7 +835,7 @@ button:focus-visible,.char-card:focus-visible,.zone-node:focus-visible,input:foc
         <div class="preview-avatar">🎓</div>
       </div>
       <div class="preview-body">
-        <div class="preview-heading"><span class="preview-icon">🧭</span><div><strong>Seven small missions</strong><span>Culture, collaboration, craft &amp; more</span></div></div>
+        <div class="preview-heading"><span class="preview-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg></span><div><strong>Seven small missions</strong><span>Culture, collaboration, craft &amp; more</span></div></div>
         <div class="preview-divider"></div>
         <div class="preview-features"><span>▶ Short video lessons</span><span>✦ Practice scenarios</span><span>▤ Study cards &amp; guides</span></div>
       </div>
@@ -837,8 +844,8 @@ button:focus-visible,.char-card:focus-visible,.zone-node:focus-visible,input:foc
   </main>
   <div class="title-stats" aria-label="Included learning features">
     <div class="ts-item"><span class="stat-icon stat-blue">7</span><span><strong>Topic worlds</strong><small>Explore at your pace</small></span></div>
-    <div class="ts-item"><span class="stat-icon stat-green">🧠</span><span><strong>Study Center</strong><small>Recall, quiz, reflect</small></span></div>
-    <div class="ts-item"><span class="stat-icon stat-yellow">💾</span><span><strong>Your progress</strong><small>Saved on this device</small></span></div>
+    <div class="ts-item"><span class="stat-icon stat-green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5c2.8-.9 5.2-.5 8 1.1v13c-2.8-1.6-5.2-2-8-1.1zM20 5.5c-2.8-.9-5.2-.5-8 1.1v13c2.8-1.6 5.2-2 8-1.1z"/><path d="M12 7v12"/></svg></span><span><strong>Study Center</strong><small>Recall, quiz, reflect</small></span></div>
+    <div class="ts-item"><span class="stat-icon stat-yellow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h12l3 3v13H5z"/><path d="M8 4v6h8V4m-8 16v-7h8v7"/><path d="M17 4v4h3"/></svg></span><span><strong>Your progress</strong><small>Saved on this device</small></span></div>
   </div>
   <p class="prototype-notice">Independent learning prototype. Not Google onboarding, HR advice, a credential, or internal policy. Always follow current company guidance.</p>
 </div>
@@ -912,10 +919,10 @@ button:focus-visible,.char-card:focus-visible,.zone-node:focus-visible,input:foc
       <div class="leg-item"><span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block"></span> Explored</div>
       <div class="leg-item">Choose any topic to begin</div>
     </div>
-    <button class="map-btn" onclick="showOverlay('study')">🧠 Study Center</button>
-    <button class="map-btn" onclick="showOverlay('inventory')">🎒 Inventory</button>
-    <button class="map-btn" onclick="showOverlay('achievements')">🏆 Achievements</button>
-    <button class="map-btn" onclick="showOverlay('okrs')">🧭 First 90 Days</button>
+    <button class="map-btn" onclick="showOverlay('study')"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5c2.8-.9 5.2-.5 8 1.1v13c-2.8-1.6-5.2-2-8-1.1zM20 5.5c-2.8-.9-5.2-.5-8 1.1v13c2.8-1.6 5.2-2 8-1.1z"/><path d="M12 7v12"/></svg></span>Study Center</button>
+    <button class="map-btn" onclick="showOverlay('inventory')"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8h14l1.5 12h-17z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><path d="M9 12v2m6-2v2"/></svg></span>Inventory</button>
+    <button class="map-btn" onclick="showOverlay('achievements')"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4v2a4 4 0 0 0 4 4m8-6h4v2a4 4 0 0 1-4 4"/><path d="M12 13v4m-4 3h8m-7 0v-3h6v3"/></svg></span>Achievements</button>
+    <button class="map-btn" onclick="showOverlay('okrs')"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/><path d="m13 11 6-6m-3 0h3v3"/></svg></span>First 90 Days</button>
   </div>
 </div>
 
@@ -2019,7 +2026,7 @@ function showOverlay(type){
   overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');
   if(type==='inventory'){
     panel.innerHTML=`<button class="close-overlay" onclick="closeOverlay()">✕</button>
-      <div class="overlay-title">🎒 Inventory</div>
+      <div class="overlay-title"><span class="overlay-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8h14l1.5 12h-17z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><path d="M9 12v2m6-2v2"/></svg></span>Inventory</div>
       <div class="inv-grid">
         ${INVENTORY_ALL.map(item=>{const owned=GS.inventory.some(i=>i&&i.id===item.id);return`<div class="inv-item${owned?'':' empty'}">
           <div class="inv-icon">${item.icon}</div>
@@ -2029,7 +2036,7 @@ function showOverlay(type){
       </div>`;
   } else if(type==='achievements'){
     panel.innerHTML=`<button class="close-overlay" onclick="closeOverlay()">✕</button>
-      <div class="overlay-title">🏆 Game Awards</div>
+      <div class="overlay-title"><span class="overlay-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4v2a4 4 0 0 0 4 4m8-6h4v2a4 4 0 0 1-4 4"/><path d="M12 13v4m-4 3h8m-7 0v-3h6v3"/></svg></span>Game Awards</div>
       <div class="badge-grid-o">
         ${ALL_BADGES.map(b=>{const has=GS.badges.includes(b.id);return`<div class="badge-o ${has?'unlocked-o':'locked-o'}">
           <div class="bo-icon">${b.icon}</div>
@@ -2042,7 +2049,7 @@ function showOverlay(type){
     renderStudyCenter();
   } else if(type==='okrs'){
     panel.innerHTML=`<button class="close-overlay" onclick="closeOverlay()">✕</button>
-      <div class="overlay-title">🧭 Your first 90 days</div>
+      <div class="overlay-title"><span class="overlay-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/><path d="m13 11 6-6m-3 0h3v3"/></svg></span>Your first 90 days</div>
       ${renderOKRPanel()}`;
   }
   const title=panel.querySelector('.overlay-title');if(title)title.id='overlay-title';
@@ -2113,7 +2120,7 @@ function renderStudyCenter(){
   const note=typeof STUDY_PROGRESS.notes[zone]==='string'?STUDY_PROGRESS.notes[zone]:'';
   const savedAnswer=STUDY_CENTER_QUIZ_ANSWERED?`<div class="study-quiz-feedback" role="status">${STUDY_CENTER_QUIZ_ANSWERED?((STUDY_CENTER_LAST_ANSWER===question.ans)?'Correct. ':'Not quite. '):''}${escapeHTML(question.exp)}<button class="map-btn" style="margin-top:10px" onclick="nextStudyCenterQuiz()">Next question →</button></div>`:'';
   panel.innerHTML=`<button class="close-overlay" onclick="closeOverlay()" aria-label="Close study center">✕</button>
-    <div class="overlay-title" id="overlay-title">🧠 Study Center</div>
+    <div class="overlay-title" id="overlay-title"><span class="overlay-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5c2.8-.9 5.2-.5 8 1.1v13c-2.8-1.6-5.2-2-8-1.1zM20 5.5c-2.8-.9-5.2-.5-8 1.1v13c2.8-1.6 5.2-2 8-1.1z"/><path d="M12 7v12"/></svg></span>Study Center</div>
     <div id="study-center-content">
     <p class="plan-intro">Choose any topic, review cards on a spaced schedule, test recall with mixed questions, and open its printable pack.</p>
     <div class="study-center-block"><h3>Your progress</h3><div class="study-progress">${learnedCount} of ${totalCards} cards marked learned · ${dueCount} due now · ${newCount} new · notes and scores saved on this browser</div><div class="plan-progress" role="progressbar" aria-label="Flashcard mastery" aria-valuemin="0" aria-valuemax="${totalCards}" aria-valuenow="${learnedCount}"><div class="plan-progress-fill" style="width:${Math.round(learnedCount/totalCards*100)}%"></div></div></div>
